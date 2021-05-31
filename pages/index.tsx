@@ -13,7 +13,7 @@ export async function getStaticProps() {
 
 export default function Home(props:any) {
   useEffect(() => {
-    console.log(props.data)
+    console.log(props.document)
   }, [])
   return (
     <Layout>
