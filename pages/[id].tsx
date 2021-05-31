@@ -14,14 +14,14 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: { id: string } }) {
   const document = await Client.getByUID("article", params.id, {});
   return {
     props: { document },
   };
 }
 
-export default function Article({ document }) {
+export default function Article({ document }: { document: any }) {
   useEffect(() => {
     console.log(document);
   }, []);
