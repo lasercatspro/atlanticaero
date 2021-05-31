@@ -12,14 +12,14 @@ export async function getStaticPaths() {
 export async function getStaticProps() {
   const document = await Client.getSingle("landing", {})
   return {
-    props: {document},
+    props: { document },
   }
 }
 
 export default function Article() {
   return (
     <div>
-      
+
     </div>
   )
 }
