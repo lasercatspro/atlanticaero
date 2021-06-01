@@ -1,9 +1,9 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useState } from "react";
+import { Fragment, ReactNode, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 
-export default function ContactButton({ children, className }) {
+export default function ContactButton({ children, className } : {children: ReactNode, className: string}) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -74,7 +74,7 @@ export default function ContactButton({ children, className }) {
                     </div>
                     <div className="mt-2">
                       <h3 className="text-lg leading-6 font-medium text-gray-900">
-                        09.09.09.09.09
+                        06 41 12 72 77
                       </h3>
                     </div>
                   </div>
@@ -105,12 +105,12 @@ export default function ContactButton({ children, className }) {
                   <a
                     href="mailto:pablo@bocageairlines.fr"
                     type="button"
-                    className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 border-gray-300 text-base font-medium text-gray-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                    className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 border-gray-300 text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                     onClick={() => {
                       setOpen(false);
                     }}
                   >
-                    Envoyez-nous un email
+                    Écrivez-nous
                   </a>
                 </div>
               </div>
