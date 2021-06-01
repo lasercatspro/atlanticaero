@@ -48,3 +48,13 @@ export interface FeatureT extends SliceT {
     image: ImageT
   }
 }
+
+export interface WhoT extends SliceT {
+  primary: {
+    contact: string
+    name: string
+    role: string
+    image: ImageT
+    bio: RichTextBlock[]
+  }
+}
