@@ -58,3 +58,12 @@ export interface WhoT extends SliceT {
     bio: RichTextBlock[]
   }
 }
+
+export interface HighlightedArticleT extends SliceT {
+  primary: {
+    "article-id": any
+    description: RichTextBlock[]
+    headline: RichTextBlock[]
+    image: ImageT
+  }
+}
