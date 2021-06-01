@@ -3,6 +3,7 @@ import { Companies, Features, Hero, Who, Plane, Testimonials, Footer, Layout } f
 import React, { useEffect, useState } from 'react';
 import { RichText } from 'prismic-reactjs';
 import { FeatureT, landingT, PartnerT, SliceT } from '../types';
+import { WhoT } from '../types/index';
 
 export async function getStaticProps() {
   const document = await Client.getSingle("landing", {})
@@ -15,16 +16,18 @@ export async function getStaticProps() {
 export default function Home(props: any) {
   const data: landingT = props.document.data
   const slices: landingT["body"] = data.body
-  const partners = slices.find((el: SliceT ) => el.slice_type === "partenaires") as PartnerT;
-  const features = props.document.data.body.filter((el: any) => el.slice_type === "feature");
+  const partners = slices.find((el: SliceT) => el.slice_type === "partenaires") as PartnerT
+  const features = props.document.data.body.filter((el: any) => el.slice_type === "feature") as FeatureT[]
+  const who = slices.find((el: SliceT) => el.slice_type === "qui-suis-je__") as WhoT
+
 
 
   return (
     <Layout >
       <Hero title={RichText.asText(data["hero-p"])} headline={RichText.asText(data["hero-headline"])} image={data["hero-image"]} />
       {partners && <Companies partners={partners} />}
-      <Features title={RichText.asText(data["features-title"])} subtitle={RichText.asText(data["features-subtitle"])} />
-      <Who />
+      {features && <Features title={RichText.asText(data["features-title"])} subtitle={RichText.asText(data["features-subtitle"])} features={features} />}
+      {who && <Who buttonText={data['whoami-contact-button-text']} title={data['whoami-title']} who={who} />}
       <Plane />
       <Testimonials />
       <Footer />

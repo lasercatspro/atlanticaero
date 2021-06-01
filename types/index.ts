@@ -34,14 +34,27 @@ export interface PartnerT extends SliceT {
   items: { partner_logo: ImageT }[]
 }
 
+export interface FeatureItemT {
+  icon: "CurrencyEuroIcon" | "ShieldCheckIcon" | "AcademicCapIcon" | "MailIcon" | "UsersIcon" | "ScaleIcon" | "PaperAirplaneIcon"
+  p: RichTextBlock[]
+  title: RichTextBlock[]
+}
+
 export interface FeatureT extends SliceT {
-  items: {
-    icon: string
-    p: RichTextBlock[]
-    title: RichTextBlock[]
-  }[]
+  items: FeatureItemT[]
   primary: {
     description: RichTextBlock[]
     title: RichTextBlock[]
+    image: ImageT
+  }
+}
+
+export interface WhoT extends SliceT {
+  primary: {
+    contact: string
+    name: string
+    role: string
+    image: ImageT
+    bio: RichTextBlock[]
   }
 }
