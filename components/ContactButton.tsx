@@ -1,9 +1,9 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useState } from "react";
+import { Fragment, ReactNode, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 
-export default function ContactButton({ children, className }) {
+export default function ContactButton({ children, className } : {children: ReactNode, className: string}) {
   const [open, setOpen] = useState(false);
   return (
     <>
