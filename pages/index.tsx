@@ -6,7 +6,7 @@ import { FeatureT, landingT, PartnerT, SliceT } from '../types';
 import { WhoT } from '../types/index';
 
 export async function getStaticProps() {
-  const document = await Client.getSingle("landing", {})
+  const document = await Client.getSingle("landing", { fetchLinks: "article.image" })
   return {
     props: { document },
   }
