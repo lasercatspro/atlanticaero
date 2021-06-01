@@ -74,7 +74,7 @@ export default function ContactButton({ children, className } : {children: React
                     </div>
                     <div className="mt-2">
                       <h3 className="text-lg leading-6 font-medium text-gray-900">
-                        09.09.09.09.09
+                        06 41 12 72 77
                       </h3>
                     </div>
                   </div>
@@ -105,12 +105,12 @@ export default function ContactButton({ children, className } : {children: React
                   <a
                     href="mailto:pablo@bocageairlines.fr"
                     type="button"
-                    className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 border-gray-300 text-base font-medium text-gray-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                    className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 border-gray-300 text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                     onClick={() => {
                       setOpen(false);
                     }}
                   >
-                    Envoyez-nous un email
+                    Écrivez-nous
                   </a>
                 </div>
               </div>
