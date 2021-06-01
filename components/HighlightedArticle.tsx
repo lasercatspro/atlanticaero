@@ -8,6 +8,7 @@ type Props = {
 }
 
 const HighlightedArticle = ({ article }: Props) => {
+
   return (
     <div className="relative py-16 bg-white">
       <div className="absolute inset-x-0 top-0 hidden h-1/2 bg-gray-50 lg:block" aria-hidden="true" />
@@ -19,8 +20,8 @@ const HighlightedArticle = ({ article }: Props) => {
               <div className="aspect-w-10 aspect-h-6 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1">
                 <img
                   className="object-cover object-center shadow-2xl rounded-3xl"
-                  src={article.primary.image.url}
-                  alt={article.primary.image.alt ? article.primary.image.alt : "le Storch S"}
+                  src={article.primary["article-id"].data.image.url}
+                  alt={article.primary["article-id"].data.image.alt ? article.primary.image.alt : "le Storch S"}
                 />
               </div>
             </div>

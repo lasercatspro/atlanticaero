@@ -62,6 +62,7 @@ export interface WhoT extends SliceT {
 export interface HighlightedArticleT extends SliceT {
   primary: {
     "article-id": {
+      data: {image: ImageT}
       id: string
       isBroken: boolean
       slug: string
