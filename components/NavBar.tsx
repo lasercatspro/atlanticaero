@@ -1,6 +1,6 @@
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { Fragment } from "react";
+import { Popover, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/solid";
 import {
   BookmarkAltIcon,
   CalendarIcon,
@@ -13,69 +13,89 @@ import {
   SupportIcon,
   ViewGridIcon,
   XIcon,
-  MenuIcon
-} from '@heroicons/react/outline'
+  MenuIcon,
+} from "@heroicons/react/outline";
+import ContactButton from "./ContactButton";
 
 const features = [
   {
-    name: 'Analytics',
-    href: '#',
-    description: 'Get a better understanding of where your traffic is coming from.',
+    name: "Analytics",
+    href: "#",
+    description:
+      "Get a better understanding of where your traffic is coming from.",
     icon: ChartBarIcon,
   },
   {
-    name: 'Engagement',
-    href: '#',
-    description: 'Speak directly to your customers in a more meaningful way.',
+    name: "Engagement",
+    href: "#",
+    description: "Speak directly to your customers in a more meaningful way.",
     icon: CursorClickIcon,
   },
-  { name: 'Security', href: '#', description: "Your customers' data will be safe and secure.", icon: ShieldCheckIcon },
   {
-    name: 'Integrations',
-    href: '#',
+    name: "Security",
+    href: "#",
+    description: "Your customers' data will be safe and secure.",
+    icon: ShieldCheckIcon,
+  },
+  {
+    name: "Integrations",
+    href: "#",
     description: "Connect with third-party tools that you're already using.",
     icon: ViewGridIcon,
   },
   {
-    name: 'Automations',
-    href: '#',
-    description: 'Build strategic funnels that will drive your customers to convert',
+    name: "Automations",
+    href: "#",
+    description:
+      "Build strategic funnels that will drive your customers to convert",
     icon: RefreshIcon,
   },
-]
+];
 const callsToAction = [
-  { name: 'Watch Demo', href: '#', icon: PlayIcon },
-  { name: 'Contact Sales', href: '#', icon: PhoneIcon },
-]
+  { name: "Watch Demo", href: "#", icon: PlayIcon },
+  { name: "Contact Sales", href: "#", icon: PhoneIcon },
+];
 const resources = [
   {
-    name: 'Help Center',
-    description: 'Get all of your questions answered in our forums or contact support.',
-    href: '#',
+    name: "Help Center",
+    description:
+      "Get all of your questions answered in our forums or contact support.",
+    href: "#",
     icon: SupportIcon,
   },
   {
-    name: 'Guides',
-    description: 'Learn how to maximize our platform to get the most out of it.',
-    href: '#',
+    name: "Guides",
+    description:
+      "Learn how to maximize our platform to get the most out of it.",
+    href: "#",
     icon: BookmarkAltIcon,
   },
   {
-    name: 'Events',
-    description: 'See what meet-ups and other events we might be planning near you.',
-    href: '#',
+    name: "Events",
+    description:
+      "See what meet-ups and other events we might be planning near you.",
+    href: "#",
     icon: CalendarIcon,
   },
-  { name: 'Security', description: 'Understand how we take your privacy seriously.', href: '#', icon: ShieldCheckIcon },
-]
+  {
+    name: "Security",
+    description: "Understand how we take your privacy seriously.",
+    href: "#",
+    icon: ShieldCheckIcon,
+  },
+];
 const recentPosts = [
-  { id: 1, name: 'Boost your conversion rate', href: '#' },
-  { id: 2, name: 'How to use search engine optimization to drive traffic to your site', href: '#' },
-  { id: 3, name: 'Improve your customer experience', href: '#' },
-]
+  { id: 1, name: "Boost your conversion rate", href: "#" },
+  {
+    id: 2,
+    name: "How to use search engine optimization to drive traffic to your site",
+    href: "#",
+  },
+  { id: 3, name: "Improve your customer experience", href: "#" },
+];
 
 function classNames(...classes: any) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 const NavBar = () => {
@@ -102,28 +122,35 @@ const NavBar = () => {
                 </Popover.Button>
               </div>
 
-
-              <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+              <a
+                href="#"
+                className="text-base font-medium text-gray-500 hover:text-gray-900"
+              >
                 Formation
               </a>
-              <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+              <a
+                href="#"
+                className="text-base font-medium text-gray-500 hover:text-gray-900"
+              >
                 Baptêmes
               </a>
-              <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+              <a
+                href="#"
+                className="text-base font-medium text-gray-500 hover:text-gray-900"
+              >
                 Qui-suis-je ?
               </a>
-              <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+              <a
+                href="#"
+                className="text-base font-medium text-gray-500 hover:text-gray-900"
+              >
                 Avion
               </a>
 
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-
-                <a
-                  href="#"
-                  className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-                >
+                <ContactButton className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
                   Volez
-              </a>
+                </ContactButton>
               </div>
             </div>
           </div>
@@ -168,8 +195,13 @@ const NavBar = () => {
                           href={item.href}
                           className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                         >
-                          <item.icon className="flex-shrink-0 h-6 w-6 text-indigo-600" aria-hidden="true" />
-                          <span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>
+                          <item.icon
+                            className="flex-shrink-0 h-6 w-6 text-indigo-600"
+                            aria-hidden="true"
+                          />
+                          <span className="ml-3 text-base font-medium text-gray-900">
+                            {item.name}
+                          </span>
                         </a>
                       ))}
                     </nav>
@@ -177,13 +209,19 @@ const NavBar = () => {
                 </div>
                 <div className="py-6 px-5 space-y-6">
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
+                    <a
+                      href="#"
+                      className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    >
                       Pricing
-                  </a>
+                    </a>
 
-                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
+                    <a
+                      href="#"
+                      className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    >
                       Docs
-                  </a>
+                    </a>
                     {resources.map((item) => (
                       <a
                         key={item.name}
@@ -200,12 +238,15 @@ const NavBar = () => {
                       className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                     >
                       Sign up
-                  </a>
+                    </a>
                     <p className="mt-6 text-center text-base font-medium text-gray-500">
                       Existing customer?
-                    <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                      <a
+                        href="#"
+                        className="text-indigo-600 hover:text-indigo-500"
+                      >
                         Sign in
-                    </a>
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -215,7 +256,7 @@ const NavBar = () => {
         </>
       )}
     </Popover>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
