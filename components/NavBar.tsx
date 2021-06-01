@@ -16,6 +16,7 @@ import {
   MenuIcon,
 } from "@heroicons/react/outline";
 import ContactButton from "./ContactButton";
+import { navigation } from '../utils/index';
 
 const features = [
   {
@@ -100,55 +101,38 @@ function classNames(...classes: any) {
 
 const NavBar = () => {
   return (
-    <Popover className="sticky z-10 top-0 bg-white shadow">
+    <Popover className="sticky top-0 z-10 bg-white shadow">
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex justify-between items-center py-3 md:justify-start md:space-x-10">
+          <div className="px-4 mx-auto max-w-7xl sm:px-6">
+            <div className="flex items-center justify-between py-3 md:justify-start md:space-x-10">
               <div className="flex justify-start lg:w-0 lg:flex-1">
                 <a href="#">
                   <span className="sr-only">Workflow</span>
                   <img
-                    className="h-8 w-auto sm:h-10"
+                    className="w-auto h-8 sm:h-10"
                     src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                     alt=""
                   />
                 </a>
               </div>
-              <div className="-mr-2 -my-2 md:hidden">
-                <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+              <div className="-my-2 -mr-2 md:hidden">
+                <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <span className="sr-only">Open menu</span>
-                  <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                  <MenuIcon className="w-6 h-6" aria-hidden="true" />
                 </Popover.Button>
               </div>
+              <div className="hidden space-x-4 md:flex">
+                {navigation.map(item => <a
+                  href={item.href}
+                  className="text-base font-medium text-gray-500 hover:text-gray-900"
+                >
+                  {item.name}
+                </a>)}
+              </div>
 
-              <a
-                href="#"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
-              >
-                Formation
-              </a>
-              <a
-                href="#"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
-              >
-                Baptêmes
-              </a>
-              <a
-                href="#"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
-              >
-                Qui-suis-je ?
-              </a>
-              <a
-                href="#"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
-              >
-                Avion
-              </a>
-
-              <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                <ContactButton className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+              <div className="items-center justify-end hidden md:flex md:flex-1 lg:w-0">
+                <ContactButton className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700">
                   Volez
                 </ContactButton>
               </div>
@@ -168,35 +152,35 @@ const NavBar = () => {
             <Popover.Panel
               focus
               static
-              className="absolute top-0 inset-x-0 z-10 p-2 transition transform origin-top-right md:hidden"
+              className="absolute inset-x-0 top-0 z-10 p-2 transition origin-top-right transform md:hidden"
             >
-              <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
-                <div className="pt-5 pb-6 px-5">
+              <div className="bg-white divide-y-2 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 divide-gray-50">
+                <div className="px-5 pt-5 pb-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <img
-                        className="h-8 w-auto"
+                        className="w-auto h-8"
                         src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                         alt="Workflow"
                       />
                     </div>
                     <div className="-mr-2">
-                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                      <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                         <span className="sr-only">Close menu</span>
-                        <XIcon className="h-6 w-6" aria-hidden="true" />
+                        <XIcon className="w-6 h-6" aria-hidden="true" />
                       </Popover.Button>
                     </div>
                   </div>
-                  <div className="mt-6">
+                  {/* <div className="mt-6">
                     <nav className="grid gap-y-8">
                       {features.map((item) => (
                         <a
                           key={item.name}
                           href={item.href}
-                          className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                          className="flex items-center p-3 -m-3 rounded-md hover:bg-gray-50"
                         >
                           <item.icon
-                            className="flex-shrink-0 h-6 w-6 text-indigo-600"
+                            className="flex-shrink-0 w-6 h-6 text-indigo-600"
                             aria-hidden="true"
                           />
                           <span className="ml-3 text-base font-medium text-gray-900">
@@ -205,50 +189,24 @@ const NavBar = () => {
                         </a>
                       ))}
                     </nav>
-                  </div>
+                  </div> */}
                 </div>
-                <div className="py-6 px-5 space-y-6">
+                <div className="px-5 py-6 space-y-6">
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                    <a
-                      href="#"
-                      className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      Pricing
-                    </a>
 
-                    <a
-                      href="#"
-                      className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    {navigation.map(item => <a
+                      href={item.href}
+                      className="text-base font-medium text-gray-500 hover:text-gray-900"
                     >
-                      Docs
-                    </a>
-                    {resources.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="text-base font-medium text-gray-900 hover:text-gray-700"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
+                      {item.name}
+                    </a>)}
+
+
+
                   </div>
-                  <div>
-                    <a
-                      href="#"
-                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-                    >
-                      Sign up
-                    </a>
-                    <p className="mt-6 text-center text-base font-medium text-gray-500">
-                      Existing customer?
-                      <a
-                        href="#"
-                        className="text-indigo-600 hover:text-indigo-500"
-                      >
-                        Sign in
-                      </a>
-                    </p>
-                  </div>
+                  <ContactButton className="inline-flex items-center justify-center w-full px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700">
+                    Volez
+                </ContactButton>
                 </div>
               </div>
             </Popover.Panel>

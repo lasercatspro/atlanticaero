@@ -58,3 +58,31 @@ export interface WhoT extends SliceT {
     bio: RichTextBlock[]
   }
 }
+
+export interface HighlightedArticleT extends SliceT {
+  primary: {
+    "article-id": {
+      id: string
+      isBroken: boolean
+      slug: string
+      type: string
+      uid: string
+    }
+    description: RichTextBlock[]
+    headline: RichTextBlock[]
+    image: ImageT
+  }
+}
+
+export interface TestimonialItemT {
+  image: ImageT
+  name: string
+  "people-desc": RichTextBlock[]
+  testimonial: RichTextBlock[]
+}
+export interface TestimonialT extends SliceT {
+  items: TestimonialItemT[]
+  primary: {
+    title: RichTextBlock[]
+  }
+}
