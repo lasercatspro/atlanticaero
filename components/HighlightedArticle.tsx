@@ -1,5 +1,7 @@
 import { RichText } from "prismic-reactjs"
+import React from "react"
 import { HighlightedArticleT } from "../types"
+import Link from 'next/link'
 
 type Props = {
   article: HighlightedArticleT
@@ -78,12 +80,13 @@ const HighlightedArticle = ({ article }: Props) => {
               <p className="text-lg text-white">
                 {RichText.asText(article.primary.description)}
               </p>
-              <a
-                className="block w-full px-5 py-3 text-base font-medium text-center text-indigo-700 bg-white border border-transparent rounded-md shadow-md hover:bg-gray-50 sm:inline-block sm:w-auto"
-                href="#"
-              >
-                Explore open positions
+              <Link href={`/${article.primary["article-id"].slug}`}>
+                <a
+                  className="block w-full px-5 py-3 text-base font-medium text-center text-indigo-700 bg-white border border-transparent rounded-md shadow-md hover:bg-gray-50 sm:inline-block sm:w-auto"
+                >
+                  lire plus
               </a>
+              </Link>
             </div>
           </div>
         </div>

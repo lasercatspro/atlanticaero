@@ -1,5 +1,6 @@
 import { RichText, RichTextBlock } from 'prismic-reactjs';
 import { WhoT } from '../types/index';
+import ContactButton from './ContactButton';
 
 type Props = {
   title: RichTextBlock[],
@@ -57,6 +58,9 @@ const Who = ({title, who}: Props) => {
                           </a>
                         </li>
                       </ul> */}
+                                      <ContactButton className=" whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                  Contactez-moi !
+                </ContactButton>
                     </div>
                   </div>
                 </div>
