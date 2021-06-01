@@ -9,5 +9,6 @@ import NavBar from './NavBar';
 import QuoteIcon from './QuoteIcon';
 import Layout from './Layout';
 import Icons from './Icons';
+import Date from './Date';
 
-export { Hero, Companies, Features, Who, HighlightedArticle, Testimonials, Footer, NavBar, QuoteIcon, Layout, Icons }
+export { Hero, Companies, Features, Who, HighlightedArticle, Testimonials, Footer, NavBar, QuoteIcon, Layout, Icons, Date }

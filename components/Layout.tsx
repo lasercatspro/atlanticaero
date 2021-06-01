@@ -1,6 +1,5 @@
 import Head from "next/head";
-import { NavBar } from "./index";
-import { useState } from "react";
+import { NavBar, Footer } from "./index";
 
 type Props = {
   children?: React.ReactNode;
@@ -17,6 +16,7 @@ const Layout = ({ children }: Props) => {
 
       <NavBar />
       {children}
+      <Footer />
     </>
   );
 };
