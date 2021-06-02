@@ -1,16 +1,14 @@
-import Prismic from "@prismicio/client";
 import { Client } from "../prismic-config";
 import Layout from '../components/Layout';
 import { ArticleT } from '../types/index';
 import { RichText } from 'prismic-reactjs';
-import { ArticleJsonLd, BreadcrumbJsonLd } from 'next-seo';
+import { BlogJsonLd, BreadcrumbJsonLd } from 'next-seo';
 import { useRouter } from "next/router";
+import { getAllArticles } from "../lib/prismicApi";
 
 export async function getStaticPaths() {
-  const document = await Client.query(
-    [Prismic.Predicates.at("document.type", "article")],
-    { pageSize: 1000 }
-  );
+  const document = await getAllArticles()
+  
   const paths = document.results.map((page) => ({ params: { id: page.uid } }));
   return {
     paths,
@@ -30,10 +28,10 @@ export default function Article({ document }: { document: ArticleT }) {
   const { asPath } = useRouter()
   const data: ArticleT["data"] = document.data
   
-  return <Layout imageUrl={data.image.url && data.image.url} title={`Bocage AirLines | ${RichText.asText(data.title)}`} description={RichText.asText(data.description) ? RichText.asText(data.description) : `Bocage AirLines : ${RichText.asText(data.title)}`}>
+  return <Layout imageUrl={data.image.url && data.image.url} title={RichText.asText(data.title)} description={RichText.asText(data.description) ? RichText.asText(data.description) : RichText.asText(data.title)}>
 
     {/* JSON-LD */}
-    <ArticleJsonLd
+    <BlogJsonLd
       url={`https://bocageairlines.fr${asPath}`}
       title={RichText.asText(data.title)}
       images={[
@@ -41,9 +39,7 @@ export default function Article({ document }: { document: ArticleT }) {
       ]}
       datePublished={data.first_publication_date}
       dateModified={data.last_publication_date}
-      authorName={['Pablo Bell']}
-      publisherName="Pablo Bell"
-      publisherLogo=""
+      authorName='Pablo Bell'
       description={RichText.asText(data.description)}
     />
     <BreadcrumbJsonLd
