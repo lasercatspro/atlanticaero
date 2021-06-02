@@ -1,4 +1,5 @@
 import { RichTextBlock } from "prismic-reactjs"
+import Article from '../pages/[id]';
 
 export type landingT = {
   body: SliceT[]
@@ -85,5 +86,24 @@ export interface TestimonialT extends SliceT {
   items: TestimonialItemT[]
   primary: {
     title: RichTextBlock[]
+  }
+}
+
+export interface ArticleT {
+  data: {
+    image: ImageT
+    text: RichTextBlock[]
+    title: RichTextBlock[]
+    first_publication_date: string
+    href: string
+    id: string
+    lang: string
+    last_publication_date: string
+    linked_documents: []
+    slugs: string[]
+    tags: string[]
+    type: string
+    uid: string
+
   }
 }

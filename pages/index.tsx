@@ -1,5 +1,5 @@
 import { Client } from '../prismic-config'
-import { Companies, Features, Hero, Who, HighlightedArticle, Testimonials, Footer, Layout } from '../components';
+import { Companies, Features, Hero, Who, HighlightedArticle, Testimonials,  Layout } from '../components';
 import { RichText } from 'prismic-reactjs';
 import { FeatureT, HighlightedArticleT, landingT, PartnerT, SliceT, TestimonialT } from '../types';
 import { WhoT } from '../types/index';
@@ -40,7 +40,6 @@ export default function Home(props: any) {
       {who && <Who buttonText={data['whoami-contact-button-text']} title={data['whoami-title']} who={who} />}
       {HighlightedArticle && <HighlightedArticle article={article} />}
       <Testimonials testimonials={testimonials} />
-      <Footer />
     </Layout>
   )
 }
