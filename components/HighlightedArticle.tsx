@@ -21,7 +21,7 @@ const HighlightedArticle = ({ article }: Props) => {
                 <img
                   className="object-cover object-center shadow-2xl rounded-3xl"
                   src={article.primary["article-id"].data.image.url}
-                  alt={article.primary["article-id"].data.image.alt ? article.primary.image.alt : "le Storch S"}
+                  alt={article.primary["article-id"].data.image.alt ? article.primary["article-id"].data.image.alt : "le Storch S"}
                 />
               </div>
             </div>
