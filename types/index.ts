@@ -47,6 +47,7 @@ export interface FeatureT extends SliceT {
     description: RichTextBlock[]
     title: RichTextBlock[]
     image: ImageT
+    "related-article"?: RelatedArticleT
   }
 }
 
@@ -60,16 +61,21 @@ export interface WhoT extends SliceT {
   }
 }
 
+export interface RelatedArticleT {
+  data: { image: ImageT }
+  id: string
+  isBroken: boolean
+  lang: string
+  link_type: string
+  slug: string
+  tags: string[]
+  type: string
+  uid: string
+}
+
 export interface HighlightedArticleT extends SliceT {
   primary: {
-    "article-id": {
-      data: { image: ImageT }
-      id: string
-      isBroken: boolean
-      slug: string
-      type: string
-      uid: string
-    }
+    "article-id": RelatedArticleT
     description: RichTextBlock[]
     headline: RichTextBlock[]
     image: ImageT

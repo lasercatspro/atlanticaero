@@ -125,6 +125,7 @@ const NavBar = () => {
               </div>
               <div className="hidden space-x-6 lg:flex">
                 {navigation.map(item => <a
+                  key={item.name}
                   href={item.href}
                   className="text-base font-medium text-gray-500 hover:text-gray-900"
                 >
@@ -175,30 +176,12 @@ const NavBar = () => {
                       </Popover.Button>
                     </div>
                   </div>
-                  {/* <div className="mt-6">
-                    <nav className="grid gap-y-8">
-                      {features.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className="flex items-center p-3 -m-3 rounded-md hover:bg-gray-50"
-                        >
-                          <item.icon
-                            className="flex-shrink-0 w-6 h-6 text-indigo-600"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-3 text-base font-medium text-gray-900">
-                            {item.name}
-                          </span>
-                        </a>
-                      ))}
-                    </nav>
-                  </div> */}
                 </div>
                 <div className="px-5 py-6 space-y-6">
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
 
                     {navigation.map(item => <a
+                      key={item.name}
                       href={item.href}
                       className="text-base font-medium text-gray-500 hover:text-gray-900"
                     >

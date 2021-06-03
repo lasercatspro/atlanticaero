@@ -2,19 +2,30 @@
 import { RichText } from 'prismic-reactjs';
 import { Icons } from './index';
 import { FeatureT, FeatureItemT } from '../types/index';
+import Link from "next/link"
+import { ChevronRightIcon } from '@heroicons/react/solid';
 
 type titleProps = {
   title: string
   description: string
+  href?: string
 }
 
-const FeatureTitle = ({ title, description }: titleProps) => {
+const FeatureTitle = ({ title, description, href }: titleProps) => {
   return (
     <>
       <h3 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">{title}</h3>
       <p className="mt-3 text-lg text-gray-500">
         {description}
       </p>
+      {href && <div className="mt-5 text-lg text-indigo-500">
+        <Link href={href}>
+          <a className="flex items-center font-bold uppercase ">
+            lire plus
+            <ChevronRightIcon className="w-5 h-5" />
+          </a>
+        </Link>
+      </div>}
     </>
 
   )
@@ -47,6 +58,7 @@ type Props = {
 }
 
 const Features = ({ title, subtitle, features }: Props) => {
+  console.log(features)
 
   return (
     <div className="py-16 overflow-hidden bg-gray-50 lg:py-24">
@@ -61,90 +73,60 @@ const Features = ({ title, subtitle, features }: Props) => {
           </p>
         </div>
 
-        {features.map((feature, i) => <>
+        {features.map((feature, i) => <div key={RichText.asText(feature.primary.description)}>
+
           {/* si i === pair le texte est à gauche */}
-          <div key={+RichText.asText(feature.primary.title) + i}>
-            {i % 2 === 0 ? <>
-              <svg
-                className="absolute hidden transform -translate-x-1/2 lg:block left-full -translate-y-1/4"
-                width={404}
-                height={784}
-                fill="none"
-                viewBox="0 0 404 784"
-                aria-hidden="true"
-              >
-                <defs>
-                  <pattern
-                    id="b1e6e422-73f8-40a6-b5d9-c8586e37e0e7"
-                    x={0}
-                    y={0}
-                    width={20}
-                    height={20}
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
-                  </pattern>
-                </defs>
-                <rect width={404} height={784} fill="url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)" />
-              </svg>
 
-              <div className="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
-                <div className="relative">
-                  <FeatureTitle title={RichText.asText(feature.primary.title)} description={RichText.asText(feature.primary.description)}
-                  />
+          {i % 2 === 0 ? <>
+            <svg
+              className="absolute hidden transform -translate-x-1/2 lg:block left-full -translate-y-1/4"
+              width={404}
+              height={784}
+              fill="none"
+              viewBox="0 0 404 784"
+              aria-hidden="true"
+            >
+              <defs>
+                <pattern
+                  id="b1e6e422-73f8-40a6-b5d9-c8586e37e0e7"
+                  x={0}
+                  y={0}
+                  width={20}
+                  height={20}
+                  patternUnits="userSpaceOnUse"
+                >
+                  <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
+                </pattern>
+              </defs>
+              <rect width={404} height={784} fill="url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)" />
+            </svg>
 
-                  <dl className="mt-10 space-y-10">
-                    {feature.items.map((item) => (
-                      <FeatureItem item={item} key={RichText.asText(item.title)} />
-                    ))}
-                  </dl>
-                </div>
+            <div className="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+              <div className="relative">
+                <FeatureTitle title={RichText.asText(feature.primary.title)} description={RichText.asText(feature.primary.description)}
+                href={feature?.primary?.['related-article'] && feature.primary['related-article'].uid}
+                />
 
-                <div className="relative mt-10 -mx-4 lg:mt-0" aria-hidden="true">
-                  <svg
-                    className="absolute transform -translate-x-1/2 translate-y-16 left-1/2 lg:hidden"
-                    width={784}
-                    height={404}
-                    fill="none"
-                    viewBox="0 0 784 404"
-                  >
-                    <defs>
-                      <pattern
-                        id="ca9667ae-9f92-4be7-abcb-9e3d727f2941"
-                        x={0}
-                        y={0}
-                        width={20}
-                        height={20}
-                        patternUnits="userSpaceOnUse"
-                      >
-                        <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
-                      </pattern>
-                    </defs>
-                    <rect width={784} height={404} fill="url(#ca9667ae-9f92-4be7-abcb-9e3d727f2941)" />
-                  </svg>
-                  <img
-                    className="relative mx-auto"
-                    width={490}
-                    src={feature.primary.image.url}
-                    alt={feature.primary.image.alt ? feature.primary.image.alt : "devenez pilote"}
-                  />
-                </div>
+
+                <dl className="mt-10 space-y-10">
+                  {feature.items.map((item) => (
+                    <FeatureItem item={item} key={RichText.asText(item.title)} />
+                  ))}
+                </dl>
               </div>
 
-            </>
-              :
-              <>
+
+              <div className="relative mt-10 -mx-4 lg:mt-0" aria-hidden="true">
                 <svg
-                  className="absolute hidden transform translate-x-1/2 translate-y-12 lg:block right-full"
-                  width={404}
-                  height={784}
+                  className="absolute transform -translate-x-1/2 translate-y-16 left-1/2 lg:hidden"
+                  width={784}
+                  height={404}
                   fill="none"
-                  viewBox="0 0 404 784"
-                  aria-hidden="true"
+                  viewBox="0 0 784 404"
                 >
                   <defs>
                     <pattern
-                      id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
+                      id="ca9667ae-9f92-4be7-abcb-9e3d727f2941"
                       x={0}
                       y={0}
                       width={20}
@@ -154,63 +136,98 @@ const Features = ({ title, subtitle, features }: Props) => {
                       <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
                     </pattern>
                   </defs>
-                  <rect width={404} height={784} fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)" />
+                  <rect width={784} height={404} fill="url(#ca9667ae-9f92-4be7-abcb-9e3d727f2941)" />
                 </svg>
+                <img
+                  className="relative mx-auto"
+                  width={490}
+                  src={feature.primary.image.url}
+                  alt={feature.primary.image.alt ? feature.primary.image.alt : "devenez pilote"}
+                />
+              </div>
+            </div>
 
-                <div className="relative mt-12 sm:mt-16 lg:mt-24">
-                  <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
-                    <div className="lg:col-start-2">
-                      <FeatureTitle title={RichText.asText(feature.primary.title)} description={RichText.asText(feature.primary.description)}
-                      />
+          </>
+            :
+            <>
+              <svg
+                className="absolute hidden transform translate-x-1/2 translate-y-12 lg:block right-full"
+                width={404}
+                height={784}
+                fill="none"
+                viewBox="0 0 404 784"
+                aria-hidden="true"
+              >
+                <defs>
+                  <pattern
+                    id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
+                    x={0}
+                    y={0}
+                    width={20}
+                    height={20}
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
+                  </pattern>
+                </defs>
+                <rect width={404} height={784} fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)" />
+              </svg>
 
-                      <dl className="mt-10 space-y-10">
-                        {feature.items.map((item) => (
-                          <FeatureItem item={item} key={RichText.asText(item.title)} />
-                        ))}
-                      </dl>
-                    </div>
+              <div className="relative mt-12 sm:mt-16 lg:mt-24">
+                <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
+                  <div className="lg:col-start-2">
+                    <FeatureTitle title={RichText.asText(feature.primary.title)} description={RichText.asText(feature.primary.description)}
+                    href={feature?.primary?.['related-article'] && feature.primary['related-article'].uid}
+                    />
 
-                    <div className="relative mt-10 -mx-4 lg:mt-0 lg:col-start-1">
-                      <svg
-                        className="absolute transform -translate-x-1/2 translate-y-16 left-1/2 lg:hidden"
-                        width={784}
-                        height={404}
-                        fill="none"
-                        viewBox="0 0 784 404"
-                        aria-hidden="true"
-                      >
-                        <defs>
-                          <pattern
-                            id="e80155a9-dfde-425a-b5ea-1f6fadd20131"
-                            x={0}
-                            y={0}
-                            width={20}
-                            height={20}
-                            patternUnits="userSpaceOnUse"
-                          >
-                            <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
-                          </pattern>
-                        </defs>
-                        <rect width={784} height={404} fill="url(#e80155a9-dfde-425a-b5ea-1f6fadd20131)" />
-                      </svg>
-                      <img
-                        className="relative mx-auto"
-                        width={490}
-                        src={feature.primary.image.url}
-                        alt={feature.primary.image.alt ? feature.primary.image.alt : "baptême de l'air"}
-                      />
-                    </div>
+                    <dl className="mt-10 space-y-10">
+                      {feature.items.map((item) => (
+                        <FeatureItem item={item} key={RichText.asText(item.title)} />
+                      ))}
+                    </dl>
+                  </div>
+
+                  <div className="relative mt-10 -mx-4 lg:mt-0 lg:col-start-1">
+                    <svg
+                      className="absolute transform -translate-x-1/2 translate-y-16 left-1/2 lg:hidden"
+                      width={784}
+                      height={404}
+                      fill="none"
+                      viewBox="0 0 784 404"
+                      aria-hidden="true"
+                    >
+                      <defs>
+                        <pattern
+                          id="e80155a9-dfde-425a-b5ea-1f6fadd20131"
+                          x={0}
+                          y={0}
+                          width={20}
+                          height={20}
+                          patternUnits="userSpaceOnUse"
+                        >
+                          <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
+                        </pattern>
+                      </defs>
+                      <rect width={784} height={404} fill="url(#e80155a9-dfde-425a-b5ea-1f6fadd20131)" />
+                    </svg>
+                    <img
+                      className="relative mx-auto"
+                      width={490}
+                      src={feature.primary.image.url}
+                      alt={feature.primary.image.alt ? feature.primary.image.alt : "baptême de l'air"}
+                    />
                   </div>
                 </div>
-              </>
-            }
-          </div>
-        </>)}
+              </div>
+            </>
+          }
+        </div>
+        )}
 
 
 
       </div>
-    </div>
+    </div >
 
   )
 }

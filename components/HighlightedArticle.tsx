@@ -2,6 +2,7 @@ import { RichText } from "prismic-reactjs"
 import React from "react"
 import { HighlightedArticleT } from "../types"
 import Link from 'next/link'
+import Button from "./Button"
 
 type Props = {
   article: HighlightedArticleT
@@ -77,15 +78,18 @@ const HighlightedArticle = ({ article }: Props) => {
               <h2 className="text-3xl font-extrabold text-white" id="join-heading">
                 {RichText.asText(article.primary.headline)}
               </h2>
-              <p className="text-lg text-white">
+              <p className="pb-3 text-lg text-white">
                 {RichText.asText(article.primary.description)}
               </p>
               <Link href={`/${article.primary["article-id"].uid}`}>
-                <a
+                <a >
+                  <Button color="secondary" />
+                </a>
+                {/* <a
                   className="block w-full px-5 py-3 text-base font-medium text-center text-indigo-700 bg-white border border-transparent rounded-md shadow-md hover:bg-gray-50 sm:inline-block sm:w-auto"
                 >
                   lire plus
-              </a>
+              </a> */}
               </Link>
             </div>
           </div>
