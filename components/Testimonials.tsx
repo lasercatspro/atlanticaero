@@ -15,8 +15,6 @@ const Testimonials = ({ testimonials }: Props) => {
           <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
             {RichText.asText(testimonials.primary.title)}
           </h2>
-
-
           <ul className="space-y-12 md:grid md:grid-cols-2 md:items-start md:gap-x-8 md:gap-y-12 md:space-y-0">
             {testimonials.items.map((testimonial, i) => (
               <li key={testimonial.name}>
