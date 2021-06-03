@@ -21,7 +21,7 @@ const Companies = ({ partners }: Props) => {
             >
               <div className=" relative h-12 w-24 md:h-24 md:w-36">
                 <Image
-                  className="object-contain object-center "
+                  className="object-contain object-center text-gray-300 "
                   layout="fill"
                   // width={partner_logo.dimensions.width}
                   // height={partner_logo.dimensions.height}
