@@ -101,7 +101,7 @@ function classNames(...classes: any) {
 
 const NavBar = () => {
   return (
-    <Popover className="sticky top-0 z-10 bg-white shadow">
+    <Popover className="sticky top-0 z-20 bg-white shadow">
       {({ open }) => (
         <>
           <div className="px-4 mx-auto max-w-7xl sm:px-6">
