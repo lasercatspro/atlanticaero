@@ -21,8 +21,8 @@ const HighlightedArticle = ({ article }: Props) => {
               <div className="relative z-10 aspect-w-10 aspect-h-6 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 shadow-2xl rounded-3xl overflow-hidden">
                 <Image
                   layout="responsive"
-                  width={data.image.dimensions.width}
-                  height={data.image.dimensions.height}
+                  width={720}
+                  height={ data.image.dimensions.height*720 / data.image.dimensions.width}
                   className="object-cover object-center "
                   src={data.image.url}
                   alt={data.image.alt ? data.image.alt : "le Storch S"}
