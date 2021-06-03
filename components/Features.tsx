@@ -157,11 +157,8 @@ const Features = ({ title, subtitle, features }: Props) => {
                       </svg>
                       <div className="relative mx-auto w-4/5 shadow-2xl rounded-3xl overflow-hidden">
                         <Image
-                          height={
-                            (feature.primary.image.dimensions.height * 720) /
-                            feature.primary.image.dimensions.width
-                          }
-                          width={720}
+                          height={feature.primary.image.dimensions.height}
+                          width={feature.primary.image.dimensions.width}
                           layout="responsive"
                           src={feature.primary.image.url}
                           alt={
@@ -266,11 +263,8 @@ const Features = ({ title, subtitle, features }: Props) => {
                         </svg>
                         <div className="relative mx-auto w-4/5 shadow-2xl rounded-3xl overflow-hidden">
                           <Image
-                            height={
-                              (feature.primary.image.dimensions.height * 720) /
-                              feature.primary.image.dimensions.width
-                            }
-                            width={720}
+                            height={feature.primary.image.dimensions.height}
+                            width={feature.primary.image.dimensions.width}
                             layout="responsive"
                             src={feature.primary.image.url}
                             alt={
