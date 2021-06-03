@@ -37,12 +37,14 @@ const MoreArticles = ({ articles }: Props) => {
                     <p className="mt-3 text-base text-gray-500">{RichText.asText(article.data.description)}</p>
                   </a>
                 </div>
-                <Link href={`/${article.uid}`}>
-                  <a className="flex items-center font-bold text-indigo-600 uppercase ">
-                    lire plus
+                <div className="mt-2">
+                  <Link href={`/${article.uid}`}>
+                    <a className="flex items-center font-bold text-indigo-600 uppercase ">
+                      lire plus
                   <ChevronRightIcon className="w-5 h-5" />
-                  </a>
-                </Link>
+                    </a>
+                  </Link>
+                </div>
                 {/* <div className="flex items-center mt-6">
                   <div className="flex-shrink-0">
                     <a href={post.author.href}>

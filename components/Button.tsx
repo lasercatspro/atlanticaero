@@ -6,7 +6,7 @@ type Props = {
 
 const Button = ({ className, color, children }: Props) => {
   return (
-    <a
+    <div
       className={`
       block w-full px-5 py-3 text-base font-medium text-center cursor-pointer  border border-transparent rounded-md shadow-md  sm:inline-block sm:w-auto
       ${color === "secondary" && "text-indigo-700 bg-white hover:bg-gray-50"}
@@ -15,7 +15,7 @@ const Button = ({ className, color, children }: Props) => {
       `}
     >
       {children ? children : "lire plus"}
-    </a>
+    </div>
   )
 }
 

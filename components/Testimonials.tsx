@@ -15,42 +15,54 @@ const Testimonials = ({ testimonials }: Props) => {
           <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
             {RichText.asText(testimonials.primary.title)}
           </h2>
-
-          <ul className="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 lg:gap-y-12 lg:space-y-0">
+          <ul className="space-y-12 lg:w-auto sm:grid sm:grid-cols-2 sm:items-start sm:gap-x-8 sm:gap-y-12 sm:space-y-0">
             {testimonials.items.map((testimonial, i) => (
               <li key={testimonial.name}>
-                <div className="space-y-4 sm:grid sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:gap-8">
-                  <div className="h-0 aspect-w-3 aspect-h-2  sm:aspect-w-3 sm:aspect-h-4 ">
-                      <Image
-                        layout="responsive"
-                        width={testimonial.image.dimensions.width}
-                        height={testimonial.image.dimensions.height}
+                <div className="flex space-x-4 lg:space-y-4 h-36 lg:h-auto lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
+                  {/* image */}
+                  <div className="w-24 h-24 lg:w-auto lg:h-0 aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4">
+                    <Image
+                      layout="responsive"
+                      width={testimonial.image.dimensions.width}
+                      height={testimonial.image.dimensions.height}
 
-                        className="object-cover rounded-lg shadow-lg"
-                        src={testimonial.image.url}
-                        alt={
-                          testimonial.image.alt
-                            ? testimonial.image.alt
-                            : `on a volé ensemble ${i.toString()}`
-                        }
-                      />
+                      className="object-contain rounded-lg shadow-lg lg:object-cover"
+                      src={testimonial.image.url}
+                      alt={
+                        testimonial.image.alt
+                          ? testimonial.image.alt
+                          : `on a volé ensemble ${i.toString()}`
+                      }
+                    />
                   </div>
+                  {/* textes */}
                   <div className="sm:col-span-2">
                     <div className="space-y-4">
                       <div className="space-y-1 text-lg font-medium leading-6">
                         <h3>{testimonial.name}</h3>
                         <QuoteIcon />
-                        <p className="text-indigo-600">
+                        <p className="hidden text-indigo-600 lg:block">
                           {RichText.asText(testimonial["people-desc"])}
                         </p>
                       </div>
-                      <div className="text-lg">
+                      <div className="hidden text-lg lg:block">
                         <p className="text-gray-500">
                           {RichText.asText(testimonial.testimonial)}
                         </p>
                       </div>
                     </div>
                   </div>
+
+
+                </div>
+                {/* au dessous de lg on passe le texte sous la photo et le nom */}
+                <div className="block text-lg lg:hidden">
+                  <p className="hidden text-indigo-600 lg:block">
+                    {RichText.asText(testimonial["people-desc"])}
+                  </p>
+                  <p className="text-gray-500">
+                    {RichText.asText(testimonial.testimonial)}
+                  </p>
                 </div>
               </li>
             ))}

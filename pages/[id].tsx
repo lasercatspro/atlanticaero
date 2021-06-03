@@ -42,7 +42,6 @@ export default function Article({ document, articles }: { document: ArticleT, ar
           : RichText.asText(data.title)
       }
     >
-      {/* JSON-LD */}
       <BlogJsonLd
         url={`https://bocageairlines.fr${asPath}`}
         title={RichText.asText(data.title)}
@@ -52,6 +51,7 @@ export default function Article({ document, articles }: { document: ArticleT, ar
         authorName="Pablo Bell"
         description={RichText.asText(data.description)}
       />
+
       <BreadcrumbJsonLd
         itemListElements={[
           {
@@ -61,7 +61,6 @@ export default function Article({ document, articles }: { document: ArticleT, ar
           },
         ]}
       />
-
       {/* CONTENT */}
       <div className="max-w-3xl px-4 py-16 mx-auto text-black bg-white sm:px-6 ">
         <div className="text-center">
@@ -93,7 +92,6 @@ export default function Article({ document, articles }: { document: ArticleT, ar
           <RichText render={data.text} htmlSerializer={htmlSerializer} />
         </div>
       </div>
-
 
       <div className="bg-indigo-50">
         <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between">
