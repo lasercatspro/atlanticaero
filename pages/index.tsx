@@ -3,8 +3,11 @@ import { Companies, Features, Hero, Who, HighlightedArticle, Testimonials,  Layo
 import { RichText } from 'prismic-reactjs';
 import { FeatureT, HighlightedArticleT, landingT, PartnerT, SliceT, TestimonialT } from '../types';
 import { WhoT } from '../types/index';
+import generateSitemap from '../lib/sitemap';
 
 export async function getStaticProps() {
+  await generateSitemap();
+
   const document = await Client.getSingle("landing", { fetchLinks: "article.image" })
   return {
     props: { document },
@@ -21,19 +24,8 @@ export default function Home(props: any) {
   const article = slices.find((el: SliceT) => el.slice_type === "article_special") as HighlightedArticleT
   const testimonials = slices.find((el: SliceT) => el.slice_type === "clients_heureux") as TestimonialT
 
-
-
-
-
-  console.log("data data data")
-  console.log(data)
-  // console.log("slices slices slices")
-  // console.log(slices)
-  console.log("testimonials testimonials testimonials")
-  console.log(testimonials)
-
   return (
-    <Layout >
+    <Layout imageUrl={data["hero-image"].url} title={RichText.asText(data["hero-p"])} description={RichText.asText(data["hero-headline"])}>
       <Hero title={RichText.asText(data["hero-p"])} headline={RichText.asText(data["hero-headline"])} image={data["hero-image"]} />
       {partners && <Companies partners={partners} />}
       {features && <Features title={RichText.asText(data["features-title"])} subtitle={RichText.asText(data["features-subtitle"])} features={features} />}

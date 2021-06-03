@@ -63,7 +63,7 @@ export interface WhoT extends SliceT {
 export interface HighlightedArticleT extends SliceT {
   primary: {
     "article-id": {
-      data: {image: ImageT}
+      data: { image: ImageT }
       id: string
       isBroken: boolean
       slug: string
@@ -91,6 +91,7 @@ export interface TestimonialT extends SliceT {
 
 export interface ArticleT {
   data: {
+    description: RichTextBlock[]
     image: ImageT
     text: RichTextBlock[]
     title: RichTextBlock[]
