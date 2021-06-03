@@ -32,8 +32,8 @@ const generateSitemap = async () => {
         .replace('.mdx', '');
       // Remove the word index from route
       return path === "/index"
-        ? { url: "/", changefreq: "always", priority: 0.8 }
-        : { url: path, changefreq: "always", priority: 0.8 };
+        ? { url: "/", changefreq: "daily", priority: 0.8 }
+        : { url: path, changefreq: "daily", priority: 0.8 };
     })
     .filter((page: any) => !blocklist.includes(page.url));
 
@@ -41,7 +41,7 @@ const generateSitemap = async () => {
 
   const document = await getAllArticles();
   const postLinks = document.results.map((article) => ({
-    url: `/actualites/${article.uid}`,
+    url: `/${article.uid}`,
     changefreq: "daily",
     priority: 0.6,
   }));

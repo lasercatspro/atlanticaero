@@ -4,6 +4,7 @@ import { Icons } from './index';
 import { FeatureT, FeatureItemT } from '../types/index';
 import Link from "next/link"
 import { ChevronRightIcon } from '@heroicons/react/solid';
+import Image from "next/image";
 
 type titleProps = {
   title: string
@@ -27,43 +28,41 @@ const FeatureTitle = ({ title, description, href }: titleProps) => {
         </Link>
       </div>}
     </>
-
-  )
-}
+  );
+};
 
 type itemProps = {
-  item: FeatureItemT
-}
+  item: FeatureItemT;
+};
 
 const FeatureItem = ({ item }: itemProps) => {
-
   return (
     <div className="relative">
       <dt>
         <div className="absolute flex items-center justify-center w-12 h-12 text-white bg-indigo-500 rounded-md">
           <Icons icon={item.icon} className="w-6 h-6" ariaHidden={true} />
         </div>
-        <p className="ml-16 text-lg font-medium leading-6 text-gray-900">{RichText.asText(item.title)}</p>
+        <p className="ml-16 text-lg font-medium leading-6 text-gray-900">
+          {RichText.asText(item.title)}
+        </p>
       </dt>
-      <dd className="mt-2 ml-16 text-base text-gray-500">{RichText.asText(item.p)}</dd>
+      <dd className="mt-2 ml-16 text-base text-gray-500">
+        {RichText.asText(item.p)}
+      </dd>
     </div>
-  )
-
-}
+  );
+};
 
 type Props = {
-  title: string
-  subtitle: string
-  features: FeatureT[]
-}
+  title: string;
+  subtitle: string;
+  features: FeatureT[];
+};
 
 const Features = ({ title, subtitle, features }: Props) => {
-  console.log(features)
-
   return (
     <div className="py-16 overflow-hidden bg-gray-50 lg:py-24">
       <div className="relative max-w-xl px-4 mx-auto sm:px-6 lg:px-8 lg:max-w-7xl">
-
         <div className="relative">
           <h2 className="text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-900 sm:text-4xl">
             {title}
@@ -73,163 +72,231 @@ const Features = ({ title, subtitle, features }: Props) => {
           </p>
         </div>
 
-        {features.map((feature, i) => <div key={RichText.asText(feature.primary.description)}>
-
-          {/* si i === pair le texte est à gauche */}
-
-          {i % 2 === 0 ? <>
-            <svg
-              className="absolute hidden transform -translate-x-1/2 lg:block left-full -translate-y-1/4"
-              width={404}
-              height={784}
-              fill="none"
-              viewBox="0 0 404 784"
-              aria-hidden="true"
-            >
-              <defs>
-                <pattern
-                  id="b1e6e422-73f8-40a6-b5d9-c8586e37e0e7"
-                  x={0}
-                  y={0}
-                  width={20}
-                  height={20}
-                  patternUnits="userSpaceOnUse"
-                >
-                  <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
-                </pattern>
-              </defs>
-              <rect width={404} height={784} fill="url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)" />
-            </svg>
-
-            <div className="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
-              <div className="relative">
-                <FeatureTitle title={RichText.asText(feature.primary.title)} description={RichText.asText(feature.primary.description)}
-                href={feature?.primary?.['related-article'] && feature.primary['related-article'].uid}
-                />
-
-
-                <dl className="mt-10 space-y-10">
-                  {feature.items.map((item) => (
-                    <FeatureItem item={item} key={RichText.asText(item.title)} />
-                  ))}
-                </dl>
-              </div>
-
-
-              <div className="relative mt-10 -mx-4 lg:mt-0" aria-hidden="true">
+        {features.map((feature, i) => (
+          <div key={RichText.asText(feature.primary.title)}>
+            {i % 2 === 0 ? (
+              <>
                 <svg
-                  className="absolute transform -translate-x-1/2 translate-y-16 left-1/2 lg:hidden"
-                  width={784}
-                  height={404}
+                  className="absolute hidden transform -translate-x-1/2 lg:block left-full -translate-y-1/4"
+                  width={404}
+                  height={784}
                   fill="none"
-                  viewBox="0 0 784 404"
+                  viewBox="0 0 404 784"
+                  aria-hidden="true"
                 >
                   <defs>
                     <pattern
-                      id="ca9667ae-9f92-4be7-abcb-9e3d727f2941"
+                      id="b1e6e422-73f8-40a6-b5d9-c8586e37e0e7"
                       x={0}
                       y={0}
                       width={20}
                       height={20}
                       patternUnits="userSpaceOnUse"
                     >
-                      <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
+                      <rect
+                        x={0}
+                        y={0}
+                        width={4}
+                        height={4}
+                        className="text-gray-200"
+                        fill="currentColor"
+                      />
                     </pattern>
                   </defs>
-                  <rect width={784} height={404} fill="url(#ca9667ae-9f92-4be7-abcb-9e3d727f2941)" />
+                  <rect
+                    width={404}
+                    height={784}
+                    fill="url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)"
+                  />
                 </svg>
-                <img
-                  className="relative mx-auto"
-                  width={490}
-                  src={feature.primary.image.url}
-                  alt={feature.primary.image.alt ? feature.primary.image.alt : "devenez pilote"}
-                />
-              </div>
-            </div>
 
-          </>
-            :
-            <>
-              <svg
-                className="absolute hidden transform translate-x-1/2 translate-y-12 lg:block right-full"
-                width={404}
-                height={784}
-                fill="none"
-                viewBox="0 0 404 784"
-                aria-hidden="true"
-              >
-                <defs>
-                  <pattern
-                    id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
-                    x={0}
-                    y={0}
-                    width={20}
-                    height={20}
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
-                  </pattern>
-                </defs>
-                <rect width={404} height={784} fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)" />
-              </svg>
+                <div className="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+                  <div className="relative">
+                    <FeatureTitle
+                      title={RichText.asText(feature.primary.title)}
+                      description={RichText.asText(
+                        feature.primary.description
+                      )}
+                      href={feature.primary['related-article'] && feature.primary['related-article'].uid}
 
-              <div className="relative mt-12 sm:mt-16 lg:mt-24">
-                <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
-                  <div className="lg:col-start-2">
-                    <FeatureTitle title={RichText.asText(feature.primary.title)} description={RichText.asText(feature.primary.description)}
-                    href={feature?.primary?.['related-article'] && feature.primary['related-article'].uid}
                     />
 
                     <dl className="mt-10 space-y-10">
                       {feature.items.map((item) => (
-                        <FeatureItem item={item} key={RichText.asText(item.title)} />
+                        <FeatureItem
+                          item={item}
+                          key={RichText.asText(item.title)}
+                        />
                       ))}
                     </dl>
                   </div>
 
-                  <div className="relative mt-10 -mx-4 lg:mt-0 lg:col-start-1">
+                  <div
+                    className="relative mt-10 -mx-4 lg:mt-0"
+                    aria-hidden="true"
+                  >
                     <svg
                       className="absolute transform -translate-x-1/2 translate-y-16 left-1/2 lg:hidden"
                       width={784}
                       height={404}
                       fill="none"
                       viewBox="0 0 784 404"
-                      aria-hidden="true"
                     >
                       <defs>
                         <pattern
-                          id="e80155a9-dfde-425a-b5ea-1f6fadd20131"
+                          id="ca9667ae-9f92-4be7-abcb-9e3d727f2941"
                           x={0}
                           y={0}
                           width={20}
                           height={20}
                           patternUnits="userSpaceOnUse"
                         >
-                          <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
+                          <rect
+                            x={0}
+                            y={0}
+                            width={4}
+                            height={4}
+                            className="text-gray-200"
+                            fill="currentColor"
+                          />
                         </pattern>
                       </defs>
-                      <rect width={784} height={404} fill="url(#e80155a9-dfde-425a-b5ea-1f6fadd20131)" />
+                      <rect
+                        width={784}
+                        height={404}
+                        fill="url(#ca9667ae-9f92-4be7-abcb-9e3d727f2941)"
+                      />
                     </svg>
-                    <img
-                      className="relative mx-auto"
-                      width={490}
-                      src={feature.primary.image.url}
-                      alt={feature.primary.image.alt ? feature.primary.image.alt : "baptême de l'air"}
-                    />
+                    <div className="relative w-4/5 mx-auto overflow-hidden shadow-2xl rounded-3xl">
+                      <Image
+                        height={feature.primary.image.dimensions.height}
+                        width={feature.primary.image.dimensions.width}
+                        layout="responsive"
+                        src={feature.primary.image.url}
+                        alt={
+                          feature.primary.image.alt
+                            ? feature.primary.image.alt
+                            : "devenez pilote"
+                        }
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </>
-          }
-        </div>
-        )}
+              </>
+            ) : (
+              <>
+                <svg
+                  className="absolute hidden transform translate-x-1/2 translate-y-12 lg:block right-full"
+                  width={404}
+                  height={784}
+                  fill="none"
+                  viewBox="0 0 404 784"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <pattern
+                      id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
+                      x={0}
+                      y={0}
+                      width={20}
+                      height={20}
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <rect
+                        x={0}
+                        y={0}
+                        width={4}
+                        height={4}
+                        className="text-gray-200"
+                        fill="currentColor"
+                      />
+                    </pattern>
+                  </defs>
+                  <rect
+                    width={404}
+                    height={784}
+                    fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)"
+                  />
+                </svg>
 
+                <div className="relative mt-12 sm:mt-16 lg:mt-24">
+                  <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
+                    <div className="lg:col-start-2">
+                      <FeatureTitle
+                        title={RichText.asText(feature.primary.title)}
+                        description={RichText.asText(
+                          feature.primary.description
+                        )}
+                        href={feature.primary['related-article'] && feature.primary['related-article'].uid}
+                      />
 
+                      <dl className="mt-10 space-y-10">
+                        {feature.items.map((item) => (
+                          <FeatureItem
+                            item={item}
+                            key={RichText.asText(item.title)}
+                          />
+                        ))}
+                      </dl>
+                    </div>
 
+                    <div className="relative mt-10 -mx-4 lg:mt-0 lg:col-start-1">
+                      <svg
+                        className="absolute transform -translate-x-1/2 translate-y-16 left-1/2 lg:hidden"
+                        width={784}
+                        height={404}
+                        fill="none"
+                        viewBox="0 0 784 404"
+                        aria-hidden="true"
+                      >
+                        <defs>
+                          <pattern
+                            id="e80155a9-dfde-425a-b5ea-1f6fadd20131"
+                            x={0}
+                            y={0}
+                            width={20}
+                            height={20}
+                            patternUnits="userSpaceOnUse"
+                          >
+                            <rect
+                              x={0}
+                              y={0}
+                              width={4}
+                              height={4}
+                              className="text-gray-200"
+                              fill="currentColor"
+                            />
+                          </pattern>
+                        </defs>
+                        <rect
+                          width={784}
+                          height={404}
+                          fill="url(#e80155a9-dfde-425a-b5ea-1f6fadd20131)"
+                        />
+                      </svg>
+                      <div className="relative w-4/5 mx-auto overflow-hidden shadow-2xl rounded-3xl">
+                        <Image
+                          height={feature.primary.image.dimensions.height}
+                          width={feature.primary.image.dimensions.width}
+                          layout="responsive"
+                          src={feature.primary.image.url}
+                          alt={
+                            feature.primary.image.alt
+                              ? feature.primary.image.alt
+                              : "baptême de l'air"
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        ))}
       </div>
-    </div >
+    </div>
+  );
+};
 
-  )
-}
-
-export default Features
+export default Features;
