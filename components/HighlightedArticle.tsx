@@ -9,10 +9,7 @@ type Props = {
 }
 
 const HighlightedArticle = ({ article }: Props) => {
-<<<<<<< HEAD
   const {slug, data} = article.primary["article-id"]
-=======
->>>>>>> b4c97bacad906fa58c2d77e93fd93fa27fe81594
   return (
     <div className=" relative py-16 bg-white">
       <div className="absolute inset-x-0 top-0 hidden h-1/2 bg-gray-50 lg:block" aria-hidden="true" />
