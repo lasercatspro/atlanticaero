@@ -13,6 +13,7 @@ type titleProps = {
 }
 
 const FeatureTitle = ({ title, description, href }: titleProps) => {
+  console.log(href)
   return (
     <>
       <h3 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">{title}</h3>
@@ -20,7 +21,7 @@ const FeatureTitle = ({ title, description, href }: titleProps) => {
         {description}
       </p>
       {href && <div className="mt-5 text-lg text-indigo-500">
-        <Link href={href}>
+        <Link href={`/${href}`}>
           <a className="flex items-center font-bold uppercase ">
             lire plus
             <ChevronRightIcon className="w-5 h-5" />
