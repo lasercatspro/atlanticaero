@@ -1,5 +1,6 @@
 import { ImageT } from "../types";
 import ContactButton from "./ContactButton";
+import Image from "next/image";
 
 type Props = {
   title: string;
@@ -38,7 +39,8 @@ const Hero = ({ title, headline, image }: Props) => {
           </div>
         </div>
         <div className="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
-          <img
+          <Image
+            layout="fill" // ici fill car pas de bord, on prend l'espace de droite
             className="absolute inset-0 w-full h-full object-cover"
             src={image.url}
             alt={image.alt ? image.alt : "volez, avec aerobocage"}

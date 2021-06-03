@@ -1,4 +1,5 @@
 import { RichText } from "prismic-reactjs"
+import Image from 'next/image'
 import React from "react"
 import { HighlightedArticleT } from "../types"
 import Link from 'next/link'
@@ -8,20 +9,23 @@ type Props = {
 }
 
 const HighlightedArticle = ({ article }: Props) => {
-
+  const {slug, data} = article.primary["article-id"]
   return (
-    <div className="relative py-16 bg-white">
+    <div className=" relative py-16 bg-white">
       <div className="absolute inset-x-0 top-0 hidden h-1/2 bg-gray-50 lg:block" aria-hidden="true" />
       <div className="mx-auto bg-indigo-600 max-w-7xl lg:bg-transparent lg:px-8">
         <div className="lg:grid lg:grid-cols-12">
           <div className="relative z-10 lg:col-start-1 lg:row-start-1 lg:col-span-4 lg:py-16 lg:bg-transparent">
             <div className="absolute inset-x-0 h-1/2 bg-gray-50 lg:hidden" aria-hidden="true" />
             <div className="max-w-md px-4 mx-auto sm:max-w-3xl sm:px-6 lg:max-w-none lg:p-0">
-              <div className="aspect-w-10 aspect-h-6 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1">
-                <img
-                  className="object-cover object-center shadow-2xl rounded-3xl"
-                  src={article.primary["article-id"].data.image.url}
-                  alt={article.primary["article-id"].data.image.alt ? article.primary["article-id"].data.image.alt : "le Storch S"}
+              <div className="relative z-10 aspect-w-10 aspect-h-6 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 shadow-2xl rounded-3xl overflow-hidden">
+                <Image
+                  layout="responsive"
+                  width={data.image.dimensions.width}
+                  height={data.image.dimensions.height}
+                  className="object-cover object-center "
+                  src={data.image.url}
+                  alt={data.image.alt ? data.image.alt : "le Storch S"}
                 />
               </div>
             </div>
