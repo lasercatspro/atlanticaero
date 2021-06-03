@@ -96,21 +96,20 @@ export interface TestimonialT extends SliceT {
 }
 
 export interface ArticleT {
+  first_publication_date: string
+  href: string
+  id: string
+  lang: string
+  last_publication_date: string
+  linked_documents: []
+  slugs: string[]
+  tags: string[]
+  type: string
+  uid: string
   data: {
     description: RichTextBlock[]
     image: ImageT
     text: RichTextBlock[]
     title: RichTextBlock[]
-    first_publication_date: string
-    href: string
-    id: string
-    lang: string
-    last_publication_date: string
-    linked_documents: []
-    slugs: string[]
-    tags: string[]
-    type: string
-    uid: string
-
   }
 }

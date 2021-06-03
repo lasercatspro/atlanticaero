@@ -5,10 +5,11 @@ import { RichText } from 'prismic-reactjs';
 import { BlogJsonLd, BreadcrumbJsonLd } from 'next-seo';
 import { useRouter } from "next/router";
 import { getAllArticles } from "../lib/prismicApi";
+import { MoreArticles, ContactButton } from "../components";
 
 export async function getStaticPaths() {
   const document = await getAllArticles()
-  
+
   const paths = document.results.map((page) => ({ params: { id: page.uid } }));
   return {
     paths,
@@ -18,16 +19,22 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: { params: { id: string } }) {
   const document = await Client.getByUID("article", params.id, {});
-  // const data: ArticleT = document.data
+  const articles = await (await getAllArticles()).results
   return {
-    props: { document },
+    props: { document, articles },
   };
 }
 
-export default function Article({ document }: { document: ArticleT }) {
+export default function Article({ document, articles }: { document: ArticleT, articles: ArticleT[] }) {
   const { asPath } = useRouter()
   const data: ArticleT["data"] = document.data
-  
+
+  console.log(document)
+
+  const filteredArticles = articles.filter(article => article.id !== document.id)
+
+  console.log(filteredArticles)
+
   return <Layout imageUrl={data.image.url && data.image.url} title={RichText.asText(data.title)} description={RichText.asText(data.description) ? RichText.asText(data.description) : RichText.asText(data.title)}>
 
     {/* JSON-LD */}
@@ -37,8 +44,8 @@ export default function Article({ document }: { document: ArticleT }) {
       images={[
         data.image.url ? data.image.url : ''
       ]}
-      datePublished={data.first_publication_date}
-      dateModified={data.last_publication_date}
+      datePublished={document.first_publication_date}
+      dateModified={document.last_publication_date}
       authorName='Pablo Bell'
       description={RichText.asText(data.description)}
     />
@@ -75,5 +82,27 @@ export default function Article({ document }: { document: ArticleT }) {
         <RichText render={data.text} />
       </div>
     </div>
+
+    <div className="bg-indigo-50">
+      <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between">
+        <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
+          <span className="block">Prêt à vous envolez ?</span>
+          <span className="block text-indigo-600">Contactez-moi</span>
+        </h2>
+        <div className="flex mt-8 lg:mt-0 lg:flex-shrink-0">
+          <div className="inline-flex rounded-md shadow">
+            <ContactButton className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+              Réservez votre vol
+            </ContactButton>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <MoreArticles articles={filteredArticles} />
+
+
+
+
   </Layout>;
 }
