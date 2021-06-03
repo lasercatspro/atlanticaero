@@ -41,7 +41,11 @@ const Hero = ({ title, headline, image }: Props) => {
         <div className="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
           <Image
             layout="fill" // ici fill car pas de bord, on prend l'espace de droite
-            className="absolute inset-0 w-full h-full object-cover"
+            priority
+            // width={image.dimensions.width}
+            // height={image.dimensions.height}
+            objectFit="cover"
+            className="absolute inset-0 w-full h-full"
             src={image.url}
             alt={image.alt ? image.alt : "volez, avec aerobocage"}
           />
