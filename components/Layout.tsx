@@ -18,8 +18,16 @@ const Layout = ({ children, title, description, imageUrl }: Props) => {
         <meta name="google-site-verification" content="O8Vd23A0efSu6meEncs2n0XgwUreSlC19wILIUvUeeM" />
         <title>{title} | Bocage AirLines</title>
         <meta name="description" content={description} />
-        <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href={`https://bocageairlines.fr${asPath}`} />
+        
+        {/* favicon */}
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
 
         {/* facebook */}
         <meta property="og:title" content={title} />
