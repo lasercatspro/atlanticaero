@@ -13,7 +13,6 @@ type titleProps = {
 }
 
 const FeatureTitle = ({ title, description, href }: titleProps) => {
-  console.log(href)
   return (
     <>
       <h3 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">{title}</h3>

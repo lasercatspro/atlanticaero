@@ -36,14 +36,15 @@ const Testimonials = ({ testimonials }: Props) => {
                     />
                   </div>
                   {/* textes */}
-                  <div className="sm:col-span-2">
+                  <div className="w-9/12 sm:col-span-2">
                     <div className="space-y-4">
                       <div className="space-y-1 text-lg font-medium leading-6">
                         <h3>{testimonial.name}</h3>
-                        <QuoteIcon />
-                        <p className="hidden text-indigo-600 lg:block">
+                        <p className="text-indigo-600 ">
                           {RichText.asText(testimonial["people-desc"])}
                         </p>
+                        <QuoteIcon />
+
                       </div>
                       <div className="hidden text-lg lg:block">
                         <p className="text-gray-500">
@@ -57,9 +58,6 @@ const Testimonials = ({ testimonials }: Props) => {
                 </div>
                 {/* au dessous de lg on passe le texte sous la photo et le nom */}
                 <div className="block text-lg lg:hidden">
-                  <p className="hidden text-indigo-600 lg:block">
-                    {RichText.asText(testimonial["people-desc"])}
-                  </p>
                   <p className="text-gray-500">
                     {RichText.asText(testimonial.testimonial)}
                   </p>
