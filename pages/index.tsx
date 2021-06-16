@@ -5,6 +5,17 @@ import { FeatureT, HighlightedArticleT, landingT, PartnerT, SliceT, TestimonialT
 import { WhoT } from '../types/index';
 import generateSitemap from '../lib/sitemap';
 
+
+export async function getStaticProps() {
+  // await generateSitemap();
+
+  const document = await Client.getSingle("landing", { fetchLinks: "article.image" })
+  return {
+    props: { document },
+    revalidate: 10,
+  }
+}
+
 export default function Home(props: any) {
   const data: landingT = props.document.data
   const slices: landingT["body"] = data.body
@@ -26,12 +37,3 @@ export default function Home(props: any) {
   )
 }
 
-export async function getStaticProps() {
-  await generateSitemap();
-
-  const document = await Client.getSingle("landing", { fetchLinks: "article.image" })
-  return {
-    props: { document },
-    revalidate: 10,
-  }
-}
