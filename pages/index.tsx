@@ -7,9 +7,11 @@ import generateSitemap from '../lib/sitemap';
 
 
 export async function getStaticProps() {
-  // await generateSitemap();
 
   const document = await Client.getSingle("landing", { fetchLinks: "article.image" })
+  
+  await generateSitemap();
+
   return {
     props: { document },
     revalidate: 10,
