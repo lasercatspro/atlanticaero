@@ -2,7 +2,7 @@ import { Client } from "../prismic-config";
 import Layout from "../components/Layout";
 import { ArticleT } from "../types/index";
 import { RichText, Elements } from "prismic-reactjs";
-import { BlogJsonLd, BreadcrumbJsonLd } from "next-seo";
+import { BlogJsonLd, BreadcrumbJsonLd, ProductJsonLd } from "next-seo";
 import { useRouter } from "next/router";
 import { getAllArticles } from "../lib/prismicApi";
 import { MoreArticles, ContactButton } from "../components";
@@ -28,7 +28,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
       document: document ? document : null,
       articles: articles ? articles : null,
     },
-    revalidate: 60,
+    revalidate: 10,
   };
 }
 
@@ -42,7 +42,6 @@ export default function Article({
   error: boolean;
 }) {
   const { asPath, isFallback } = useRouter();
-
   if (!document) {
     return (
       <Layout title="404" description="404">
@@ -53,7 +52,7 @@ export default function Article({
     const data: ArticleT["data"] = document.data;
     const filteredArticles =
       articles?.filter((article) => article.id !== document.id) || [];
-
+    
     return (
       <Layout
         imageUrl={data.image.url && data.image.url}
@@ -83,15 +82,18 @@ export default function Article({
             },
           ]}
         />
+
+
+        {/* CONTENT */}
         <div className="max-w-3xl px-4 py-16 mx-auto text-black bg-white sm:px-6 ">
           <div className="text-center">
             <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
               {RichText.asText(data.title)}
             </h1>
             {data.image.url && (
-              <div className="mt-12 rounded-lg shadow-xl ring-1 ring-black ring-opacity-5 overflow-hidden">
+              <div className="mt-12 overflow-hidden rounded-lg shadow-xl ring-1 ring-black ring-opacity-5">
                 <Image
-                  // className="w-full  "
+                  // className="w-full "
                   priority
                   layout="responsive"
                   src={data.image.url}

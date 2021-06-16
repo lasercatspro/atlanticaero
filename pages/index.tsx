@@ -11,7 +11,7 @@ export async function getStaticProps() {
   const document = await Client.getSingle("landing", { fetchLinks: "article.image" })
   return {
     props: { document },
-    revalidate: 60,
+    revalidate: 10,
   }
 }
 

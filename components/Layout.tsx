@@ -78,6 +78,7 @@ const Layout = ({ children, title, description, imageUrl, noindex }: Props) => {
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
             {imageUrl && <meta property="og:image" content={imageUrl} />}
+            {/* JSON LD */}
           </>
         )}
       </Head>
