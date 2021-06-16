@@ -4,18 +4,6 @@ import { RichText } from 'prismic-reactjs';
 import { FeatureT, HighlightedArticleT, landingT, PartnerT, SliceT, TestimonialT } from '../types';
 import { WhoT } from '../types/index';
 import generateSitemap from '../lib/sitemap';
-import { useEffect } from 'react';
-
-export async function getStaticProps() {
-  await generateSitemap();
-
-  const document = await Client.getSingle("landing", { fetchLinks: "article.image" })
-  return {
-    props: { document },
-    revalidate: 10,
-  }
-}
-
 
 export default function Home(props: any) {
   const data: landingT = props.document.data
@@ -25,14 +13,6 @@ export default function Home(props: any) {
   const who = slices.find((el: SliceT) => el.slice_type === "qui-suis-je__") as WhoT
   const article = slices.find((el: SliceT) => el.slice_type === "article_special") as HighlightedArticleT
   const testimonials = slices.find((el: SliceT) => el.slice_type === "clients_heureux") as TestimonialT
-
-  console.log("lgologlog");
-  
-
-  useEffect(() => {
-    console.log("je suis dans l'effet");
-    
-  }, [])
 
   return (
     <Layout imageUrl={data["hero-image"].url} title={RichText.asText(data["hero-p"])} description={RichText.asText(data["hero-headline"])}>
@@ -44,4 +24,14 @@ export default function Home(props: any) {
       <Testimonials testimonials={testimonials} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  await generateSitemap();
+
+  const document = await Client.getSingle("landing", { fetchLinks: "article.image" })
+  return {
+    props: { document },
+    revalidate: 10,
+  }
 }
