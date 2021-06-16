@@ -37,7 +37,7 @@ const generateSitemap = async () => {
     })
     .filter((page: any) => !blocklist.includes(page.url));
 
-  //ROUTES FROM WORDPRESS
+  //ROUTES FROM CMS
 
   const document = await getAllArticles();
   const postLinks = document.results.map((article) => ({
