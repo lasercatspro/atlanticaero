@@ -4,6 +4,7 @@ import { RichText } from 'prismic-reactjs';
 import { FeatureT, HighlightedArticleT, landingT, PartnerT, SliceT, TestimonialT } from '../types';
 import { WhoT } from '../types/index';
 import generateSitemap from '../lib/sitemap';
+import { useEffect } from 'react';
 
 export async function getStaticProps() {
   await generateSitemap();
@@ -25,9 +26,18 @@ export default function Home(props: any) {
   const article = slices.find((el: SliceT) => el.slice_type === "article_special") as HighlightedArticleT
   const testimonials = slices.find((el: SliceT) => el.slice_type === "clients_heureux") as TestimonialT
 
+  console.log("lgologlog");
+  
+
+  useEffect(() => {
+    console.log("je suis dans l'effet");
+    
+  }, [])
+
   return (
     <Layout imageUrl={data["hero-image"].url} title={RichText.asText(data["hero-p"])} description={RichText.asText(data["hero-headline"])}>
       <Hero title={RichText.asText(data["hero-p"])} headline={RichText.asText(data["hero-headline"])} image={data["hero-image"]} />
+      <p>je suis ici je suis icije suis icije suis icije suis icije suis icije suis ici</p>
       {partners && <Companies partners={partners} />}
       {features && <Features title={RichText.asText(data["features-title"])} subtitle={RichText.asText(data["features-subtitle"])} features={features} />}
       {who && <Who buttonText={data['whoami-contact-button-text']} title={data['whoami-title']} who={who} />}
