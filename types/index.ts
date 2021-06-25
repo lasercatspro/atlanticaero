@@ -32,7 +32,14 @@ export interface PartnerT extends SliceT {
   primary: {
     ["partners-p"]: RichTextBlock[]
   }
-  items: { partner_logo: ImageT }[]
+  items: {
+    partner_logo: ImageT,
+    logo_link?: {
+      link_type: string
+      target?: string
+      url: string
+    }
+  }[]
 }
 
 export interface FeatureItemT {

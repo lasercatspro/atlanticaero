@@ -52,7 +52,7 @@ export default function Article({
     const data: ArticleT["data"] = document.data;
     const filteredArticles =
       articles?.filter((article) => article.id !== document.id) || [];
-    
+
     return (
       <Layout
         imageUrl={data.image.url && data.image.url}

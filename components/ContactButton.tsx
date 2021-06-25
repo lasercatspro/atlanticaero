@@ -3,7 +3,7 @@ import { Fragment, ReactNode, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 
-export default function ContactButton({ children, className } : {children: ReactNode, className: string}) {
+export default function ContactButton({ children, className }: { children: ReactNode, className: string }) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -14,11 +14,11 @@ export default function ContactButton({ children, className } : {children: React
         <Dialog
           as="div"
           static
-          className="fixed z-10 inset-0 overflow-y-auto"
+          className="fixed inset-0 z-10 overflow-y-auto"
           open={open}
           onClose={setOpen}
         >
-          <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -28,7 +28,7 @@ export default function ContactButton({ children, className } : {children: React
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-50 transition-opacity" />
+              <Dialog.Overlay className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-50" />
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
@@ -47,21 +47,21 @@ export default function ContactButton({ children, className } : {children: React
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+              <div className="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
                 <div>
                   <button
                     onClick={() => setOpen(false)}
-                    className=" flex items-center right-3 top-3 absolute rounded-full hover:bg-gray-100"
+                    className="absolute flex items-center rounded-full right-3 top-3 hover:bg-gray-100"
                   >
                     <XIcon
-                      className="h-6 w-6 text-gray-500 "
+                      className="w-6 h-6 text-gray-500 "
                       aria-hidden="true"
                     />
                   </button>
-                  <div className=" text-center ">
+                  <div className="text-center ">
                     <Dialog.Title
                       as="h3"
-                      className="text-lg leading-6 font-medium text-gray-900"
+                      className="text-lg font-medium leading-6 text-gray-900"
                     >
                       Prenons contact !
                     </Dialog.Title>
@@ -73,9 +73,16 @@ export default function ContactButton({ children, className } : {children: React
                       </p>
                     </div>
                     <div className="mt-2">
-                      <h3 className="text-lg leading-6 font-medium text-gray-900">
-                        06 41 12 72 77
-                      </h3>
+                      <a
+                        href="tel:pablo@bocageairlines.fr"
+                        type="button"
+                        className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-gray-700 border border-transparent border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                        onClick={() => {
+                          setOpen(false);
+                        }}
+                      >
+                       06 41 12 72 77
+                      </a>
                     </div>
                   </div>
                   <div className="mt-3 text-center sm:mt-5">
@@ -89,7 +96,7 @@ export default function ContactButton({ children, className } : {children: React
                 <div className="mt-4">
                   <button
                     type="button"
-                    className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                    className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                     onClick={() => {
                       setOpen(false);
                       window.open("https://calendly.com/bocageair", "_blank");
@@ -99,13 +106,13 @@ export default function ContactButton({ children, className } : {children: React
                   </button>
                 </div>
                 <div className="mt-4">
-                  <p className="text-sm text-gray-500 text-center">ou</p>
+                  <p className="text-sm text-center text-gray-500">ou</p>
                 </div>
                 <div className="mt-4">
                   <a
                     href="mailto:pablo@bocageairlines.fr"
                     type="button"
-                    className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 border-gray-300 text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                    className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-gray-700 border border-transparent border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                     onClick={() => {
                       setOpen(false);
                     }}

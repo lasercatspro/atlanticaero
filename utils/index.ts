@@ -1,6 +1,6 @@
 export const navigation = [
   { name: 'Formations', href: '/formations' },
-  { name: 'Baptême', href: '/bapteme' },
+  { name: 'Baptêmes', href: '/bapteme' },
   { name: 'Qui-suis-je ?', href: '/qui-suis-je' },
   { name: 'Avion', href: '/avion' },
   { name: 'Maintenance', href: '/maintenance' },

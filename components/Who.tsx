@@ -2,6 +2,9 @@ import { RichText, RichTextBlock } from "prismic-reactjs";
 import { WhoT } from "../types/index";
 import ContactButton from "./ContactButton";
 import Image from "next/image";
+import Link from "next/link"
+import { navigation } from "../utils";
+import { ChevronRightIcon } from '@heroicons/react/solid';
 
 type Props = {
   title: RichTextBlock[];
@@ -19,6 +22,14 @@ const Who = ({ title, who }: Props) => {
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
               {RichText.asText(title)}
             </h2>
+            <div className="mt-5 text-lg text-indigo-500">
+              <Link href={navigation[2].href}>
+                <a className="flex items-center font-bold uppercase ">
+                  lire plus
+                  <ChevronRightIcon className="w-5 h-5" />
+                </a>
+              </Link>
+            </div>
           </div>
           <div className="lg:col-span-2">
             <ul className="space-y-12 sm:divide-y sm:divide-gray-200 sm:space-y-0 sm:-mt-8 lg:gap-x-8 lg:space-y-0">
@@ -65,7 +76,7 @@ const Who = ({ title, who }: Props) => {
                           </a>
                         </li>
                       </ul> */}
-                      <ContactButton className=" whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                      <ContactButton className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm  whitespace-nowrap hover:bg-indigo-700">
                         Contactez-moi !
                       </ContactButton>
                     </div>

@@ -10,7 +10,7 @@ import { navigation } from '../utils/index';
 
 const NavBar = () => {
   return (
-    <Popover style={{zIndex: 100}} className="sticky top-0 bg-white shadow">
+    <Popover style={{ zIndex: 100 }} className="sticky top-0 bg-white shadow">
       {({ open }) => (
         <>
           <div className="px-4 mx-auto max-w-7xl sm:px-6">
@@ -32,19 +32,19 @@ const NavBar = () => {
                   <MenuIcon className="w-6 h-6" aria-hidden="true" />
                 </Popover.Button>
               </div>
-              <div className="hidden space-x-6 lg:flex">
-                {navigation.map(item => <a
+              <ul className="hidden space-x-6 lg:flex">
+                {navigation.map(item => <li><a
                   key={item.name}
                   href={item.href}
                   className="text-base font-medium text-gray-500 hover:text-gray-900"
                 >
                   {item.name}
-                </a>)}
-              </div>
+                </a></li>)}
+              </ul>
 
               <div className="items-center justify-end hidden lg:flex lg:flex-1 lg:w-0">
                 <ContactButton className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700">
-                  Volez
+                  Prenez votre envol
                 </ContactButton>
               </div>
             </div>
@@ -108,8 +108,9 @@ const NavBar = () => {
             </Popover.Panel>
           </Transition>
         </>
-      )}
-    </Popover>
+      )
+      }
+    </Popover >
   );
 };
 
