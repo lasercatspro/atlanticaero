@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { navigation } from '../utils'
+import { navigation, navigationMain, navigationSecond } from '../utils'
 
 const social = [
   {
@@ -70,7 +70,14 @@ const Footer = () => {
     <footer className="bg-gray-800">
       <div className="px-4 py-12 mx-auto overflow-hidden max-w-7xl sm:px-6 lg:px-8">
         <ul className="flex flex-wrap justify-center -mx-5 -my-2" aria-label="Footer">
-          {navigation.map((item) => (
+          {navigationMain.map((item) => (
+            <li key={item.name} className="px-5 py-2">
+              <a href={item.href} className="text-base text-gray-300 hover:text-white">
+                {item.name}
+              </a>
+            </li>
+          ))}
+          {navigationSecond.map((item) => (
             <li key={item.name} className="px-5 py-2">
               <a href={item.href} className="text-base text-gray-300 hover:text-white">
                 {item.name}

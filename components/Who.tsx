@@ -3,7 +3,7 @@ import { WhoT } from "../types/index";
 import ContactButton from "./ContactButton";
 import Image from "next/image";
 import Link from "next/link"
-import { navigation } from "../utils";
+import { navigationMain, navigationSecond } from "../utils";
 import { ChevronRightIcon } from '@heroicons/react/solid';
 
 type Props = {
@@ -23,7 +23,7 @@ const Who = ({ title, who }: Props) => {
               {RichText.asText(title)}
             </h2>
             <div className="mt-5 text-lg text-indigo-500">
-              <Link href={navigation[2].href}>
+              <Link href={navigationSecond[2].href}>
                 <a className="flex items-center font-bold uppercase ">
                   lire plus
                   <ChevronRightIcon className="w-5 h-5" />
@@ -76,7 +76,7 @@ const Who = ({ title, who }: Props) => {
                           </a>
                         </li>
                       </ul> */}
-                      <ContactButton className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm  whitespace-nowrap hover:bg-indigo-700">
+                      <ContactButton className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700">
                         Contactez-moi !
                       </ContactButton>
                     </div>
