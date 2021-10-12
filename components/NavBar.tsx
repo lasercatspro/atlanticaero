@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
+import Link from "next/link";
 import {
   XIcon,
   MenuIcon,
@@ -17,15 +18,17 @@ const NavBar = () => {
           <div className="px-4 mx-auto max-w-7xl sm:px-6">
             <div className="flex items-center justify-between py-3 lg:justify-start lg:space-x-10">
               <div className="flex justify-start lg:w-0 lg:flex-1">
-                <a className="text-xl font-black uppercase" href="/">
-                  Bocage AirLines
-                  {/* <span className="sr-only">Workflow</span>
+                <Link href="/">
+                  <a className="text-xl font-black uppercase" >
+                    Bocage AirLines
+                    {/* <span className="sr-only">Workflow</span>
                   <img
                     className="w-auto h-8 sm:h-10"
                     src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                     alt=""
                   /> */}
-                </a>
+                  </a>
+                </Link>
               </div>
               <div className="-my-2 -mr-2 lg:hidden">
                 <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -34,13 +37,15 @@ const NavBar = () => {
                 </Popover.Button>
               </div>
               <ul className="hidden space-x-6 lg:flex">
-                {navigationMain.map(item => <li><a
-                  key={item.name}
-                  href={item.href}
-                  className="text-base font-medium text-gray-500 hover:text-gray-900"
-                >
-                  {item.name}
-                </a></li>
+                {navigationMain.map(item => <li>
+                  <Link href={item.href}
+                  ><a
+                    key={item.name}
+                    className="text-base font-medium text-gray-500 hover:text-gray-900"
+                  >
+                      {item.name}
+                    </a></Link>
+                </li>
                 )}
                 <Popover.Group as="li" className="flex">
                   <Popover className="relative">
@@ -71,9 +76,11 @@ const NavBar = () => {
                             <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                               <div className="relative grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
                                 {navigationSecond.map((item) => (
-                                  <a key={item.name} href={item.href} className="block p-3 -m-3 text-base font-medium text-gray-500 rounded-md hover:text-gray-900">
-                                    {item.name}
-                                  </a>
+                                  <Link href={item.href}>
+                                    <a key={item.name} className="block p-3 -m-3 text-base font-medium text-gray-500 rounded-md hover:text-gray-900">
+                                      {item.name}
+                                    </a>
+                                  </Link>
                                 ))}
                               </div>
                             </div>
@@ -112,14 +119,16 @@ const NavBar = () => {
                 <div className="px-5 pt-5 pb-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <a className="text-lg font-black uppercase" href="/">
-                        Bocage AirLines
-                        {/*<img
+                      <Link href="/">
+                        <a className="text-lg font-black uppercase" >
+                          Bocage AirLines
+                          {/*<img
                             className="w-auto h-8"
                             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                             alt="Workflow"
                           /> */}
-                      </a>
+                        </a>
+                      </Link>
                     </div>
                     <div className="-mr-2">
                       <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -132,20 +141,20 @@ const NavBar = () => {
                 <div className="px-5 py-6 space-y-6">
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
 
-                    {navigationMain.map(item => <a
+                    {navigationMain.map(item => <Link href={item.href}><a
                       key={item.name}
-                      href={item.href}
+
                       className="text-base font-medium text-gray-500 hover:text-gray-900"
                     >
                       {item.name}
-                    </a>)}
-                    {navigationSecond.map(item => <a
+                    </a></Link>)}
+                    {navigationSecond.map(item => <Link href={item.href}><a
                       key={item.name}
-                      href={item.href}
+
                       className="text-base font-medium text-gray-500 hover:text-gray-900"
                     >
                       {item.name}
-                    </a>)}
+                    </a></Link>)}
 
 
 

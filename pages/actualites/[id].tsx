@@ -1,20 +1,21 @@
-import { Client, htmlSerializer } from "../prismic-config";
-import Layout from "../components/Layout";
-import { ArticleT } from "../types/index";
-import { RichText } from "prismic-reactjs";
+import { Client } from "../../prismic-config";
+import Layout from "../../components/Layout";
+import { ArticleT } from "../../types/index";
+import { RichText, Elements } from "prismic-reactjs";
 import { BlogJsonLd, BreadcrumbJsonLd, ProductJsonLd } from "next-seo";
 import { useRouter } from "next/router";
-import { getAllArticles, getArticlesFromTag } from "../lib/prismicApi";
-import { MoreArticles, ContactButton } from "../components";
+import { getAllArticles, getArticlesFromTag } from "../../lib/prismicApi";
+import { MoreArticles, ContactButton } from "../../components";
 import Image from "next/image";
 import DefaultErrorPage from "next/error";
 
 export async function getStaticPaths() {
-  const document = await getArticlesFromTag("home");
+  const document = await getArticlesFromTag("actualités");
 
-  const paths = document?.results?.map((page: any) => ({ params: { id: page.uid } }));
+
+  const paths = document?.results?.map((page:any) => ({ params: { id: page.uid } }));
   return {
-    paths: paths ? paths : [{ params: { id: "formations" } }],
+    paths: paths ? paths : [{ params: { id: "vol-en-italie" } }],
     fallback: "blocking",
   };
 }
@@ -41,7 +42,7 @@ export default function Article({
   articles?: ArticleT[];
   error: boolean;
 }) {
-  const { asPath, isFallback } = useRouter();
+  const { asPath } = useRouter();
   if (!document) {
     return (
       <Layout title="404" description="404">
@@ -52,6 +53,8 @@ export default function Article({
     const data: ArticleT["data"] = document.data;
     const filteredArticles =
       articles?.filter((article) => article.id !== document.id) || [];
+
+      console.log(filteredArticles.map(x => x.uid))
 
     return (
       <Layout
@@ -134,4 +137,40 @@ export default function Article({
     );
   }
 }
+
+const htmlSerializer = function (
+  type: any,
+  element: any,
+  content: any,
+  children: any,
+  key: any
+) {
+  var props = {};
+  switch (type) {
+    case Elements.image:
+      const props = {
+        dimensions: element.dimensions,
+        src: element.url,
+        alt: element.alt || "",
+      };
+      // return React.createElement('img', propsWithUniqueKey(props, key));
+      return (
+        <div className="mt-12 overflow-hidden rounded-lg shadow-xl ring-1 ring-black ring-opacity-5">
+          <Image
+            // className="w-full "
+            priority
+            layout="responsive"
+            src={props.src}
+            alt={props.alt}
+            width={props.dimensions.width}
+            height={props.dimensions.height}
+          />
+        </div>
+      );
+
+    // Return null to stick with the default behavior
+    default:
+      return null;
+  }
+};
 

@@ -8,8 +8,6 @@ type Props = {
 };
 
 const Companies = ({ partners }: Props) => {
-  console.log(partners);
-
   return (
     <div className="bg-white">
       <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8">

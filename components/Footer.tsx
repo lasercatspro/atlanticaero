@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { navigation, navigationMain, navigationSecond } from '../utils'
+import { navigationMain, navigationSecond } from '../utils'
 
 const social = [
   {
@@ -72,16 +72,20 @@ const Footer = () => {
         <ul className="flex flex-wrap justify-center -mx-5 -my-2" aria-label="Footer">
           {navigationMain.map((item) => (
             <li key={item.name} className="px-5 py-2">
-              <a href={item.href} className="text-base text-gray-300 hover:text-white">
-                {item.name}
-              </a>
+              <Link href={item.href}>
+                <a className="text-base text-gray-300 hover:text-white">
+                  {item.name}
+                </a>
+              </Link>
             </li>
           ))}
           {navigationSecond.map((item) => (
             <li key={item.name} className="px-5 py-2">
-              <a href={item.href} className="text-base text-gray-300 hover:text-white">
-                {item.name}
-              </a>
+              <Link href={item.href}>
+                <a className="text-base text-gray-300 hover:text-white">
+                  {item.name}
+                </a>
+              </Link>
             </li>
           ))}
         </ul>
