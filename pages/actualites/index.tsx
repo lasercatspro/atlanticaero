@@ -4,6 +4,7 @@ import { BreadcrumbJsonLd } from "next-seo";
 import { useRouter } from "next/router";
 import { getArticlesFromTag } from "../../lib/prismicApi";
 import Blog from "../../components/Blog";
+import BannerCta from "../../components/BannerCta";
 
 export async function getStaticProps() {
   const news = await getArticlesFromTag("actualités");
@@ -51,7 +52,7 @@ export default function Article({
       />
 
       {news && <Blog posts={news} />}
-
+      <BannerCta />
     </Layout>
   );
 

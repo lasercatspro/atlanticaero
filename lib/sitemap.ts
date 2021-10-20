@@ -3,7 +3,7 @@ const { SitemapStream, streamToPromise } = require('sitemap');
 const { Readable } = require('stream');
 const fs = require('fs');
 import { ArticleT } from "../types";
-import { getAllArticles, getArticlesFromTag } from "./prismicApi";
+import { getArticlesFromTag } from "./prismicApi";
 
 // SOURCE : https://medium.com/swlh/generate-a-sitemap-for-your-next-js-site-and-submit-it-to-google-8019ba7423bb
 
@@ -53,11 +53,6 @@ const generateSitemap = async () => {
     changefreq: "always",
     priority: 0.6,
   }));
-  console.log("//SITEMAP CONSTRUCTIONS")
-
-
-  console.log(blogLinks)
-
   //SITEMAP CONSTRUCTIONS
   const links = [...localPagesLinks, ...postLinks, ...blogLinks];
 
