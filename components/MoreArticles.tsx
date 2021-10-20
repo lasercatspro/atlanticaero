@@ -34,7 +34,7 @@ const MoreArticles = ({ articles }: Props) => {
                   </p> */}
                   <a href={article.uid} className="block mt-2">
                     <p className="text-xl font-semibold text-gray-900">{RichText.asText(article.data.title)}</p>
-                    <p className="mt-3 text-base text-gray-500">{RichText.asText(article.data.description)}</p>
+                    {article?.data?.description && <p className="mt-3 text-base text-gray-500">{RichText.asText(article.data.description)}</p>}
                   </a>
                 </div>
                 <div className="mt-2">
