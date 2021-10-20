@@ -113,6 +113,7 @@ export interface ArticleT {
   type: string
   uid: string
   data: {
+    navigation_name: RichTextBlock[]
     description: RichTextBlock[]
     image: ImageT
     text: RichTextBlock[]

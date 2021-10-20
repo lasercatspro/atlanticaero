@@ -7,10 +7,13 @@ import {
   ChevronDownIcon
 } from "@heroicons/react/outline";
 import ContactButton from "./ContactButton";
-import { navigationMain, navigationSecond } from '../utils/index';
+// import { navigationMain, navigationSecond } from '../utils/index';
+import { useNavigation } from "../utils/useNavigation";
 
 
 const NavBar = () => {
+  const {navigationMain, navigationSecond} = useNavigation()
+
   return (
     <Popover style={{ zIndex: 100 }} className="sticky top-0 bg-white shadow">
       {({ open }) => (
@@ -37,7 +40,7 @@ const NavBar = () => {
                 </Popover.Button>
               </div>
               <ul className="hidden space-x-6 lg:flex">
-                {navigationMain.map(item => <li>
+                {navigationMain && navigationMain.map(item => <li>
                   <Link href={item.href}
                   ><a
                     key={item.name}
@@ -75,7 +78,7 @@ const NavBar = () => {
                           <Popover.Panel className="absolute z-10 px-2 mt-3 transform -translate-x-1/2 w-44 left-1/2 sm:px-0">
                             <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                               <div className="relative grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
-                                {navigationSecond.map((item) => (
+                                {navigationSecond && navigationSecond.map((item) => (
                                   <Link href={item.href}>
                                     <a key={item.name} className="block p-3 -m-3 text-base font-medium text-gray-500 rounded-md hover:text-gray-900">
                                       {item.name}
@@ -93,7 +96,7 @@ const NavBar = () => {
               </ul>
 
               <div className="items-center justify-end hidden lg:flex lg:flex-1 lg:w-0">
-                <ContactButton className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700">
+                <ContactButton className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   Prenez votre envol
                 </ContactButton>
               </div>
@@ -141,14 +144,14 @@ const NavBar = () => {
                 <div className="px-5 py-6 space-y-6">
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
 
-                    {navigationMain.map(item => <Link href={item.href}><a
+                    {navigationMain && navigationMain.map(item => <Link href={item.href}><a
                       key={item.name}
 
                       className="text-base font-medium text-gray-500 hover:text-gray-900"
                     >
                       {item.name}
                     </a></Link>)}
-                    {navigationSecond.map(item => <Link href={item.href}><a
+                    {navigationSecond && navigationSecond.map(item => <Link href={item.href}><a
                       key={item.name}
 
                       className="text-base font-medium text-gray-500 hover:text-gray-900"
