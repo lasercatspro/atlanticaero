@@ -2,6 +2,7 @@ import { RichText } from "prismic-reactjs"
 import Link from "next/link"
 import { ChevronRightIcon } from '@heroicons/react/solid';
 import { ArticleT } from "../types"
+import Image from "next/image";
 
 type Props = {
   post: ArticleT
@@ -9,27 +10,33 @@ type Props = {
 
 const ArticleCard = ({ post }: Props) => {
   return (
-    <div key={RichText.asText(post.data.title)} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
-      <div className="flex-shrink-0">
-        <img className="object-cover w-full h-48" src={post.data.image.url} alt={post.data.image.alt ? post.data.image.alt : RichText.asText(post.data.title)} />
-      </div>
-      <div className="flex flex-col justify-between flex-1 p-6 bg-white">
-        <div className="flex-1">
 
-          <a href={post.uid} className="block mt-2">
-            <p className="text-xl font-semibold text-gray-900">{RichText.asText(post.data.title)}</p>
-            <p className="mt-3 text-base text-gray-500">{RichText.asText(post.data.description)}</p>
-          </a>
-        </div>
-        <div className="mt-4">
-          <Link href={`/${post.uid}`}>
-            <a className="flex items-center font-bold text-indigo-600 uppercase ">
+    <div className="mx-2 sm:mx-6 my-2 w-72 flex flex-col overflow-hidden rounded-lg shadow-lg">
+      <div className="relative w-full h-48">
+        <Image
+          layout="fill"
+          className=""
+          src={post.data.image.url}
+          alt={post.data.image.alt ? post.data.image.alt : RichText.asText(post.data.title)}
+        />
+      </div>
+      <Link href={`/actualites/${post.uid}`}>
+
+        <a className="flex flex-col justify-between flex-1 p-6 bg-white">
+          <div className="flex-1">
+
+            <div className="block mt-2">
+              <p className="text-xl font-semibold text-gray-900">{RichText.asText(post.data.title)}</p>
+              <p className="mt-3 text-base text-gray-500">{RichText.asText(post.data.description)}</p>
+            </div>
+          </div>
+
+            <div className="mt-4 flex items-center font-bold text-indigo-600 uppercase ">
               lire plus
               <ChevronRightIcon className="w-5 h-5" />
-            </a>
-          </Link>
-        </div>
-        {/* <div className="flex items-center mt-6">
+            </div>
+
+          {/* <div className="flex items-center mt-6">
         <div className="flex-shrink-0">
           <a href={post.author.href}>
             <span className="sr-only">{post.author.name}</span>
@@ -50,8 +57,11 @@ const ArticleCard = ({ post }: Props) => {
         </div>
       </div> */}
 
-      </div>
+        </a>
+          </Link>
+
     </div>
+
 
   )
 }

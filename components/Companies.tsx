@@ -1,7 +1,6 @@
 import { RichText } from "prismic-reactjs";
-import { ImageT, PartnerT } from "../types";
+import { PartnerT } from "../types";
 import Image from "next/image";
-import { LinkResolver } from "../prismic-config";
 
 type Props = {
   partners: PartnerT;

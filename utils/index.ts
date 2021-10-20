@@ -5,6 +5,7 @@ const navigationMain = [
 ]
 
 const navigationSecond = [
+  { name: 'Actualités', href: '/actualites' },
   { name: 'Qui-suis-je ?', href: '/qui-suis-je' },
   { name: 'Avion', href: '/avion' },
   { name: 'Aérodrome', href: '/la-base-ulm' },

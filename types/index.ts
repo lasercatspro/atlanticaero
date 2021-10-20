@@ -1,5 +1,4 @@
 import { RichTextBlock } from "prismic-reactjs"
-import Article from '../pages/[id]';
 
 export type landingT = {
   body: SliceT[]

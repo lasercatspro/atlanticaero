@@ -2,7 +2,8 @@ const globby = require('globby');
 const { SitemapStream, streamToPromise } = require('sitemap');
 const { Readable } = require('stream');
 const fs = require('fs');
-import { getAllArticles } from "./prismicApi";
+import { ArticleT } from "../types";
+import { getAllArticles, getArticlesFromTag } from "./prismicApi";
 
 // SOURCE : https://medium.com/swlh/generate-a-sitemap-for-your-next-js-site-and-submit-it-to-google-8019ba7423bb
 
@@ -39,15 +40,26 @@ const generateSitemap = async () => {
 
   //ROUTES FROM CMS
 
-  const document = await getAllArticles();
-  const postLinks = document.results.map((article) => ({
+  const articles = await getArticlesFromTag("home");
+  const postLinks = articles.map((article: ArticleT) => ({
     url: `/${article.uid}`,
     changefreq: "always",
     priority: 0.6,
   }));
 
+  const blogArticles = await getArticlesFromTag("actualités");
+  const blogLinks = blogArticles.map((article: ArticleT) => ({
+    url: `/actualites/${article.uid}`,
+    changefreq: "always",
+    priority: 0.6,
+  }));
+  console.log("//SITEMAP CONSTRUCTIONS")
+
+
+  console.log(blogLinks)
+
   //SITEMAP CONSTRUCTIONS
-  const links = [...localPagesLinks, ...postLinks];
+  const links = [...localPagesLinks, ...postLinks, ...blogLinks];
 
   const stream = new SitemapStream({ hostname: BASE_URL });
   const xml = await streamToPromise(
