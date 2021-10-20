@@ -25,7 +25,10 @@ const Blog = ({ posts }: Props) => {
           </p>
         </div>
         <div className="flex flex-wrap justify-center mx-auto gap-5 mt-12">
-          {posts.map((post) => (
+          {asPath === "/" ? posts.slice(0,5).map((post) => (
+            <ArticleCard key={post.id} post={post} />
+          ))
+           : posts.map((post) => (
             <ArticleCard key={post.id} post={post} />
           ))}
         </div>
