@@ -12,7 +12,7 @@ import { useNavigation } from "../utils/useNavigation";
 
 
 const NavBar = () => {
-  const {navigationMain, navigationSecond} = useNavigation()
+  const { navigationMain, navigationSecond } = useNavigation()
 
   return (
     <Popover style={{ zIndex: 100 }} className="sticky top-0 bg-white shadow">
@@ -95,11 +95,22 @@ const NavBar = () => {
                 </Popover.Group>
               </ul>
 
+
               <div className="items-center justify-end hidden lg:flex lg:flex-1 lg:w-0">
-                <ContactButton className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  Prenez votre envol
-                </ContactButton>
+                <div className="mr-3 inline-flex rounded-md shadow">
+
+                  <ContactButton className=" inline-flex items-center justify-center px-4 py-2  border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" >contact</ContactButton>
+                </div>
+
+
+                <Link href="https://bocageairlines.sumup.link/">
+
+                  <a className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Prenez votre envol
+                  </a>
+                </Link>
               </div>
+
             </div>
           </div>
 
@@ -162,9 +173,21 @@ const NavBar = () => {
 
 
                   </div>
-                  {/* <ContactButton className="inline-flex items-center justify-center w-full px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700">
-                    Volez
-                </ContactButton> */}
+                  <div className="space-y-2">
+
+                    <div className="mr-3 inline-flex rounded-md shadow">
+
+                      <ContactButton className=" inline-flex items-center justify-center px-4 py-2  border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" >contact</ContactButton>
+                    </div>
+
+
+                    <Link href="https://bocageairlines.sumup.link/">
+
+                      <a className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Prenez votre envol
+                      </a>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </Popover.Panel>

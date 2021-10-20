@@ -113,10 +113,24 @@ export interface ArticleT {
   type: string
   uid: string
   data: {
-    navigation_name: RichTextBlock[]
-    description: RichTextBlock[]
-    image: ImageT
+    body?: ProductI[]
+    navigation_name?: RichTextBlock[]
+    description?: RichTextBlock[]
+    image?: ImageT
     text: RichTextBlock[]
     title: RichTextBlock[]
   }
+}
+
+export interface ProductI {
+  items: ProductItemI[]
+  slice_type: "produits"
+}
+
+export interface ProductItemI {
+  link?: {
+    url: string
+  }
+  product?: RichTextBlock[]
+  product_description?: RichTextBlock[]
 }

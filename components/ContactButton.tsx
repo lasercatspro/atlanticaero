@@ -3,7 +3,7 @@ import { Fragment, ReactNode, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 
-export default function ContactButton({ children, className }: { children: ReactNode, className: string }) {
+export default function ContactButton({ children, className }: { children: ReactNode, className?: string }) {
   const [open, setOpen] = useState(false);
   return (
     <>

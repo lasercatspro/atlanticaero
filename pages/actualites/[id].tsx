@@ -15,7 +15,7 @@ export async function getStaticPaths() {
   const document = await getArticlesFromTag("actualités");
 
 
-  const paths = document?.map((page:any) => ({ params: { id: page.uid } }));
+  const paths = document?.map((page: any) => ({ params: { id: page.uid } }));
 
   return {
     paths: paths,
@@ -59,29 +59,32 @@ export default function Article({
 
     return (
       <Layout
-        imageUrl={data.image.url && data.image.url}
-        title={RichText.asText(data.title)}
+        imageUrl={data?.image?.url && data?.image.url}
+        title={RichText.asText(data?.title)}
         description={
-          RichText.asText(data.description)
-            ? RichText.asText(data.description)
-            : RichText.asText(data.title)
+          data?.description
+            ? RichText.asText(data?.description)
+            : RichText.asText(data?.title)
         }
       >
         {/* JSON-LD */}
         <BlogJsonLd
           url={`https://bocageairlines.fr/actualite/${asPath}`}
-          title={RichText.asText(data.title)}
-          images={[data.image.url ? data.image.url : ""]}
+          title={RichText.asText(data?.title)}
+          images={[data?.image?.url ? data?.image.url : ""]}
           datePublished={document.first_publication_date}
           dateModified={document.last_publication_date}
           authorName="Pablo Bell"
-          description={RichText.asText(data.description)}
+          description={data?.description
+            ? RichText.asText(data?.description)
+            : RichText.asText(data?.title)
+          }
         />
         <BreadcrumbJsonLd
           itemListElements={[
             {
               position: 1,
-              name: RichText.asText(data.title),
+              name: RichText.asText(data?.title),
               item: `https://bocageairlines.fr/actualite/${asPath}`,
             },
           ]}

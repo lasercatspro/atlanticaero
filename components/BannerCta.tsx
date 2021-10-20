@@ -1,5 +1,6 @@
 import React from "react";
-import { ContactButton } from ".";
+import ContactButton from "./ContactButton";
+import Cta from "./Cta";
 
 export default function BannerCta() {
   return (
@@ -11,10 +12,12 @@ export default function BannerCta() {
       </h2>
       <div className="flex mt-8 lg:mt-0 lg:flex-shrink-0">
         <div className="inline-flex rounded-md shadow">
-          <ContactButton className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Réservez votre vol
-          </ContactButton>
+          <Cta>Reservez votre vol</Cta>
         </div>
+        <div className="ml-3 inline-flex rounded-md shadow">
+          <ContactButton className=" inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" >Prenons rendez-vous</ContactButton>
+        </div>
+
       </div>
     </div>
   </div>
