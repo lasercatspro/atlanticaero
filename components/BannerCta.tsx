@@ -12,14 +12,14 @@ export default function BannerCta() {
           <span className="block">Prêt à vous envolez ?</span>
           <span className="block text-indigo-600">Contactez-moi</span>
         </h2>
-        <div className="flex space-y-2 flex-wrap mt-8 lg:mt-0 lg:flex-shrink-0">
-          <div className="mr-3 inline-flex rounded-md shadow">
+        <div className="flex flex-wrap mt-8 lg:mt-0 lg:flex-shrink-0">
+          <div className="inline-flex mb-2 mr-3 rounded-md shadow">
             <Cta>Reservez votre vol</Cta>
           </div>
-          <div className="inline-flex rounded-md shadow">
-            <button className=" inline-flex items-center justify-center px-4 py-2  border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" onClick={() => setIsOpen(true)} >contact</button>
+          <div className="inline-flex mb-2 rounded-md shadow">
+            <button className="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-indigo-600 bg-white border border-transparent rounded-md md:py-4 md:px-10 md:text-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" onClick={() => setIsOpen(true)} >contact</button>
           </div>
-
+          <ContactDialog isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
       </div>
     </div>
