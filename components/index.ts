@@ -11,7 +11,7 @@ import Layout from './Layout';
 import Icons from './Icons';
 import Date from './Date';
 import Button from './Button';
-import ContactButton from './ContactButton';
+import ContactDialog from './ContactDialog';
 import MoreArticles from './MoreArticles';
 
-export { Hero, Companies, Features, Who, HighlightedArticle, Testimonials, Footer, NavBar, QuoteIcon, Layout, Icons, Date, Button, ContactButton, MoreArticles }
+export { Hero, Companies, Features, Who, HighlightedArticle, Testimonials, Footer, NavBar, QuoteIcon, Layout, Icons, Date, Button, ContactDialog, MoreArticles }

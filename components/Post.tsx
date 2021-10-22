@@ -1,6 +1,6 @@
 import { RichText } from "prismic-reactjs"
-import React from "react"
-import { Button, ContactButton } from "."
+import React, { useState } from "react"
+import { Button } from "."
 import { htmlSerializer } from "../prismic-config"
 import { ArticleT, ProductItemI } from "../types"
 import Image from "next/image";
@@ -12,13 +12,10 @@ type Props = {
 }
 
 export default function Post({ data }: Props) {
-  console.log(data)
+
   const products = data?.body?.length !== 0 && data?.body?.find(slice => slice.slice_type === "produits")
     ?.items
     ?.map((product: ProductItemI) => product)
-
-  console.log("products   console.log(products)  ")
-  console.log(products)
 
 
   return (
@@ -49,12 +46,18 @@ export default function Post({ data }: Props) {
         <br />
         <div className="pt-12 mx-auto prose lg:prose-lg">
           <RichText render={data?.text} htmlSerializer={htmlSerializer} />
-          {products && products?.length !== 0 && products.map(el => <>
+          {products && products?.length !== 0 && products.map((el) => <div key={RichText.asText(el.product)}>
             {el.product && <RichText render={el?.product} htmlSerializer={htmlSerializer} />}
             {el.product_description && <RichText render={el?.product_description} htmlSerializer={htmlSerializer} />}
-            {el.link?.url && <Button ><Link href={el.link.url}><span className="product">acheter</span></Link></Button>}
+            {el.link?.url && <Button>
+              <Link href={el.link.url}>
+                <span className="product">
+                  acheter
+                </span>
+              </Link>
+            </Button>}
 
-          </>)}
+          </div>)}
         </div>
       </div >
 

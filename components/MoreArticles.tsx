@@ -21,7 +21,7 @@ const MoreArticles = ({ articles }: Props) => {
         </div>
         <div className="grid max-w-lg gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
           {articles.map((article, i) => (
-            <div key={RichText.asText(article.data.title)} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
+            <div key={article.id} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
               {/* <div className="flex-shrink-0">
                 <img className="object-cover w-full h-48" src={post.imageUrl} alt="" />
               </div> */}

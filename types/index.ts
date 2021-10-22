@@ -131,6 +131,6 @@ export interface ProductItemI {
   link?: {
     url: string
   }
-  product?: RichTextBlock[]
+  product: RichTextBlock[]
   product_description?: RichTextBlock[]
 }

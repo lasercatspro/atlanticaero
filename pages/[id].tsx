@@ -1,11 +1,11 @@
-import { Client, htmlSerializer } from "../prismic-config";
+import { Client } from "../prismic-config";
 import Layout from "../components/Layout";
 import { ArticleT } from "../types/index";
 import { RichText } from "prismic-reactjs";
-import { BlogJsonLd, BreadcrumbJsonLd, ProductJsonLd } from "next-seo";
+import { BlogJsonLd, BreadcrumbJsonLd } from "next-seo";
 import { useRouter } from "next/router";
 import { getAllArticles, getArticlesFromTag } from "../lib/prismicApi";
-import { MoreArticles, ContactButton } from "../components";
+import { MoreArticles } from "../components";
 import DefaultErrorPage from "next/error";
 import React from "react";
 import Post from "../components/Post";
@@ -13,7 +13,7 @@ import Post from "../components/Post";
 export async function getStaticPaths() {
   const document = await getArticlesFromTag("home");
 
-  const paths = document?.map((page: any) => ({ params: { id: page.uid } }));
+  const paths = document?.map((page: ArticleT) => ({ params: { id: page.uid } }));
   return {
     paths: paths,
     fallback: "blocking",

@@ -1,9 +1,10 @@
 import { RichText, RichTextBlock } from "prismic-reactjs";
 import { WhoT } from "../types/index";
-import ContactButton from "./ContactButton";
+import ContactDialog from "./ContactDialog";
 import Image from "next/image";
 import Link from "next/link"
 import { ChevronRightIcon } from '@heroicons/react/solid';
+import { useState } from "react";
 
 type Props = {
   title: RichTextBlock[];
@@ -12,6 +13,8 @@ type Props = {
 };
 
 const Who = ({ title, who }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const { image, bio, name, role } = who.primary;
   return (
     <div className="bg-white">
@@ -75,9 +78,10 @@ const Who = ({ title, who }: Props) => {
                           </a>
                         </li>
                       </ul> */}
-                      <ContactButton className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      <button onClick={() => setIsOpen(true)} className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         Contactez-moi !
-                      </ContactButton>
+                      </button>
+                      <ContactDialog isOpen={isOpen} setIsOpen={setIsOpen} />
                     </div>
                   </div>
                 </div>

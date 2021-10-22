@@ -1,11 +1,10 @@
 import Layout from "../../components/Layout";
 import { ArticleT } from "../../types/index";
-import { RichText, Elements } from "prismic-reactjs";
+import { RichText } from "prismic-reactjs";
 import { BlogJsonLd, BreadcrumbJsonLd, ProductJsonLd } from "next-seo";
 import { useRouter } from "next/router";
 import { getAllArticles, getArticlesFromTag } from "../../lib/prismicApi";
-import { MoreArticles, ContactButton } from "../../components";
-import Image from "next/image";
+import { MoreArticles } from "../../components";
 import DefaultErrorPage from "next/error";
 import { Client } from "../../prismic-config";
 import React from "react";
@@ -15,7 +14,7 @@ export async function getStaticPaths() {
   const document = await getArticlesFromTag("actualités");
 
 
-  const paths = document?.map((page: any) => ({ params: { id: page.uid } }));
+  const paths = document?.map((page: ArticleT) => ({ params: { id: page.uid } }));
 
   return {
     paths: paths,
