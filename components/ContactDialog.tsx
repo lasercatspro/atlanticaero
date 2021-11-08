@@ -1,7 +1,9 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Dispatch, Fragment, ReactNode, SetStateAction, useState } from "react";
+import { Dispatch, Fragment, SetStateAction, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
+import Social from "./Social";
+import { AppContext } from '../utils/appContext'
 
 type Props = {
   isOpen: boolean
@@ -9,6 +11,9 @@ type Props = {
 }
 
 export default function ContactDialog({ setIsOpen, isOpen }: Props) {
+
+  const ctxProps = useContext(AppContext);
+
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
@@ -106,9 +111,6 @@ export default function ContactDialog({ setIsOpen, isOpen }: Props) {
                 </button>
               </div>
               <div className="mt-4">
-                <p className="text-sm text-center text-gray-500">ou</p>
-              </div>
-              <div className="mt-4">
                 <a
                   href="mailto:pablo@bocageairlines.fr"
                   type="button"
@@ -120,6 +122,13 @@ export default function ContactDialog({ setIsOpen, isOpen }: Props) {
                   Écrivez-nous
                 </a>
               </div>
+              {/* <div className="mt-4">
+                <p className="text-sm text-center text-gray-500">suivez-moi</p>
+              </div> */}
+              {ctxProps?.socials && <ul className="flex justify-center mt-8 space-x-5">
+                {ctxProps?.socials?.map(item => <li><Social social={item.social} link={item.link} />
+                </li>)}
+              </ul>}
             </div>
           </Transition.Child>
         </div>
@@ -127,3 +136,4 @@ export default function ContactDialog({ setIsOpen, isOpen }: Props) {
     </Transition.Root>
   );
 }
+

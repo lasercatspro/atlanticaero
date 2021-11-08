@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { NavBar, Footer } from "./index";
 import { useRouter } from "next/router";
+import { WhoItemI } from "../types";
 
 type Props = {
   children?: React.ReactNode;
@@ -85,7 +86,7 @@ const Layout = ({ children, title, description, imageUrl, noindex }: Props) => {
 
       <NavBar />
       {children}
-      <Footer />
+      <Footer/>
     </>
   );
 };

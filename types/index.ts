@@ -65,6 +65,13 @@ export interface WhoT extends SliceT {
     image: ImageT
     bio: RichTextBlock[]
   }
+  items: WhoItemI[]
+  slice_type: "qui-suis-je__"
+}
+
+export interface WhoItemI {
+  link: string
+  social: "instagram" | "facebook" | "google-my-business" | "linkedin" | "twitter"
 }
 
 export interface RelatedArticleT {
@@ -134,3 +141,4 @@ export interface ProductItemI {
   product: RichTextBlock[]
   product_description?: RichTextBlock[]
 }
+
