@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import Link from "next/link";
 import {
@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/outline";
 import ContactDialog from "./ContactDialog";
 import { useNavigation } from "../utils/useNavigation";
+import Cta from "./Cta";
 
 
 const NavBar = () => {
@@ -98,16 +99,16 @@ const NavBar = () => {
 
 
               <div className="items-center justify-end hidden lg:flex lg:flex-1 lg:w-0">
-                <div className="mr-3 inline-flex rounded-md shadow">
-                  <button className=" inline-flex items-center justify-center px-4 py-2  border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" onClick={() => setIsOpen(true)} >contact</button>
+                <div className="inline-flex mr-3 rounded-md shadow">
+                  <button className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-indigo-600 bg-white border border-transparent rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" onClick={() => setIsOpen(true)} >contact</button>
                 </div>
 
 
                 <Link href="https://bocageairlines.sumup.link/">
-
-                  <a className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <Cta small />
+                  {/* <a className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Prenez votre envol
-                  </a>
+                  </a> */}
                 </Link>
               </div>
 
@@ -176,9 +177,9 @@ const NavBar = () => {
                   </div>
                   <div className="space-y-2">
 
-                    <div className="mr-3 inline-flex rounded-md shadow">
+                    <div className="inline-flex mr-3 rounded-md shadow">
 
-                      <button className=" inline-flex items-center justify-center px-4 py-2  border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" onClick={() => setIsOpen(true)} >contact</button>
+                      <button className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-indigo-600 bg-white border border-transparent rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" onClick={() => setIsOpen(true)} >contact</button>
 
                     </div>
 

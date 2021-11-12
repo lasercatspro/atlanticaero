@@ -1,4 +1,4 @@
 import React from "react";
-import { WhoItemI, WhoT } from "../types";
+import { landingT, WhoItemI } from "../types";
 
-export const AppContext = React.createContext<null | {socials: WhoItemI[]} >(null);
+export const AppContext = React.createContext<null | {socials: WhoItemI[], cta: landingT["cta"]} >(null);

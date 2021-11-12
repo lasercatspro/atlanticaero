@@ -1,16 +1,20 @@
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../utils/appContext";
 
 type Props = {
   children?: React.ReactNode;
+  small?: boolean
 }
 
-export default function Cta({children}: Props) {
+export default function Cta({children, small}: Props) {
+  const ctxProps = useContext(AppContext);
+
   return (
     <>
       <Link href="https://bocageairlines.sumup.link/">
-        <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          {children ? children : "Prenez votre envol"}
+        <a className={`inline-flex items-center justify-center text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700   focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${small ? "px-4 py-2" : "px-8 py-3 md:text-lg md:py-4 md:px-10 w-full "}`}>
+          {ctxProps?.cta ? ctxProps.cta : "Prenez votre envol"}
         </a>
       </Link>
     </>

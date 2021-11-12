@@ -10,6 +10,7 @@ export type landingT = {
   //whoami-contact-button-mail: null | string
   ["whoami-contact-button-text"]: string
   ["whoami-title"]: RichTextBlock[]
+  cta: string
 }
 
 export type ImageT = {
