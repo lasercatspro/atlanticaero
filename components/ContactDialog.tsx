@@ -79,14 +79,14 @@ export default function ContactDialog({ setIsOpen, isOpen }: Props) {
                   </div>
                   <div className="mt-2">
                     <a
-                      href="tel:06 41 12 72 77"
+                      href="tel:06 34 81 33 92"
                       type="button"
                       className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-gray-700 border border-transparent border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                       onClick={() => {
                         setIsOpen(false);
                       }}
                     >
-                      06 41 12 72 77
+                      06 34 81 33 92
                     </a>
                   </div>
                 </div>
