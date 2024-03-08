@@ -57,7 +57,8 @@ const Who = ({ title, who }: Props) => {
                         <p className="text-gray-500">{RichText.asText(bio)}</p>
                       </div>
                       <ul className="flex space-x-5">
-                        {who.items.map(item => <li>                            <Social social={item.social} link={item.link} />
+                        {who.items.map(item => <li>
+                          <Social social={item.social} link={item.link} />
                         </li>)}
                       </ul>
                       <button onClick={() => setIsOpen(true)} className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">

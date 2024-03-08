@@ -126,7 +126,9 @@ export default function ContactDialog({ setIsOpen, isOpen }: Props) {
                 <p className="text-sm text-center text-gray-500">suivez-moi</p>
               </div> */}
               {ctxProps?.socials && <ul className="flex justify-center mt-8 space-x-5">
-                {ctxProps?.socials?.map(item => <li><Social social={item.social} link={item.link} />
+                {ctxProps?.socials?.map(item => <li key={
+                  item.social
+                }><Social social={item.social} link={item.link} />
                 </li>)}
               </ul>}
             </div>
