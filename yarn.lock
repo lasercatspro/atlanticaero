@@ -42,7 +42,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/react@npm:^1.2.0":
+"@headlessui/react@npm:^1.7.18":
   version: 1.7.18
   resolution: "@headlessui/react@npm:1.7.18"
   dependencies:
@@ -336,14 +336,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:17.0.8":
-  version: 17.0.8
-  resolution: "@types/react@npm:17.0.8"
+"@types/react@npm:18":
+  version: 18.2.64
+  resolution: "@types/react@npm:18.2.64"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 6398dc200623dbf213747f3a1cf9f3c3bcac29b519e49c9fcb81d2665dadb21155c485381cddbb04b483a5bf3ddddefaff1a1a6ef4fa5080b1b9b144c789673e
+  checksum: 1fd28dc5e5d191619e0b001485f428a070bad11f55683a212d3bd937bdc979335913f90f4ca4f0510871e5f35d8f46b169a23276fb048d06584623d3652cc0f3
   languageName: node
   linkType: hard
 
@@ -697,11 +697,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "atlanticaero@workspace:."
   dependencies:
-    "@headlessui/react": ^1.2.0
+    "@headlessui/react": ^1.7.18
     "@heroicons/react": ^1.0.1
     "@prismicio/client": ^5.0.0
     "@tailwindcss/typography": ^0.4.1
-    "@types/react": 17.0.8
+    "@types/react": 18
     autoprefixer: ^10.2.6
     date-fns: ^2.22.1
     eslint-config-next: 12
@@ -715,7 +715,7 @@ __metadata:
     react-icons: ^4.3.1
     sitemap: ^7.0.0
     tailwindcss: ^2.1.2
-    typescript: 4.3.2
+    typescript: ^5.4.2
   languageName: unknown
   linkType: soft
 
@@ -3922,23 +3922,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:4.3.2":
-  version: 4.3.2
-  resolution: "typescript@npm:4.3.2"
+"typescript@npm:^5.4.2":
+  version: 5.4.2
+  resolution: "typescript@npm:5.4.2"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: c2a86fa03ce03b255adc13ccd70a55173ca6539ae12114feca59f34a4e9bb69f14fb7cd5adc6c2416e568cff05c870b89d1366768ec55fce04fbdffb429a1cee
+  checksum: 96d80fde25a09bcb04d399082fb27a808a9e17c2111e43849d2aafbd642d835e4f4ef0de09b0ba795ec2a700be6c4c2c3f62bf4660c05404c948727b5bbfb32a
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.3.2#~builtin<compat/typescript>":
-  version: 4.3.2
-  resolution: "typescript@patch:typescript@npm%3A4.3.2#~builtin<compat/typescript>::version=4.3.2&hash=dba6d9"
+"typescript@patch:typescript@^5.4.2#~builtin<compat/typescript>":
+  version: 5.4.2
+  resolution: "typescript@patch:typescript@npm%3A5.4.2#~builtin<compat/typescript>::version=5.4.2&hash=1f5320"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 67da730521568e0de52b13926ad714288a1a6f265b3563c0e646731e6676454bad78bea9e29eafeeb922987e09df9c52d22fabbcddd225dc88783d3610df5209
+  checksum: c1b669146bca5529873aae60870e243fa8140c85f57ca32c42f898f586d73ce4a6b4f6bb02ae312729e214d7f5859a0c70da3e527a116fdf5ad00c9fc733ecc6
   languageName: node
   linkType: hard
 
