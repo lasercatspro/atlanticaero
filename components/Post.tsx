@@ -59,7 +59,7 @@ export default function Post({ data }: Props) {
 
       {products &&
         products?.length !== 0 && <div className="">
-          <div className='max-w-7xl mx-auto prose lg:prose-lg'>
+          <div className='max-w-7 xl mx-auto prose lg:prose-lg'>
             <h2 >Découvrez nos baptêmes de l'air</h2>
 
           </div>
