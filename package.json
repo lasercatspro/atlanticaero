@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^1.0.1",
@@ -27,6 +30,7 @@
     "tailwindcss": "^2.1.2"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.11.4",
     "@types/react": "latest",
     "typescript": "^5.4.2"
   }

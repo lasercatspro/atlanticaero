@@ -1,0 +1,10 @@
+[build.environment]
+  NODE_VERSION = "18"
+
+[build]
+  command = "yarn build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
