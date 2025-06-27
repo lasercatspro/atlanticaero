@@ -88,11 +88,11 @@ const HighlightedArticle = ({ article }: Props) => {
               </p>
               <Link href={`/${article.primary["article-id"].uid}`}>
                 <Button color="secondary" />
-                {/* <a
+                {/* <Link
                   className="block w-full px-5 py-3 text-base font-medium text-center text-indigo-700 bg-white border border-transparent rounded-md shadow-md hover:bg-gray-50 sm:inline-block sm:w-auto"
                 >
                   lire plus
-              </a> */}
+              </Link> */}
               </Link>
             </div>
           </div>

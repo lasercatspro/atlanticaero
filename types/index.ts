@@ -136,7 +136,8 @@ export interface ProductI {
 }
 
 export interface ProductItemI {
-  link?: {
+  image1?: ImageT
+  link: {
     url: string
   }
   product: RichTextBlock[]

@@ -5,7 +5,7 @@ import Image from "next/image"
 const apiEndpoint = "https://atlanticaero.prismic.io/api/v2";
 export const Client = Prismic.client(apiEndpoint);
 
-export const LinkResolver = (doc:any) => {
+export const LinkResolver = (doc: any) => {
   if (doc.isBroken) {
     return "/not-found";
   }
@@ -35,7 +35,7 @@ export const htmlSerializer = function (
       };
       // return React.createElement('img', propsWithUniqueKey(props, key));
       return (
-        <div className="mt-12 overflow-hidden rounded-lg shadow-xl ring-1 ring-black ring-opacity-5">
+        <div className="mt-12 overflow-hidden rounded-lg shadow-xl">
           <Image
             // className="w-full "
             priority

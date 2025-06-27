@@ -86,7 +86,7 @@ const Layout = ({ children, title, description, imageUrl, noindex }: Props) => {
 
       <NavBar />
       {children}
-      <Footer/>
+      <Footer />
     </>
   );
 };

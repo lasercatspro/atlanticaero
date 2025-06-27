@@ -13,7 +13,7 @@ const Blog = ({ posts }: Props) => {
   const { asPath } = useRouter();
 
   return (
-    <div className={`relative px-4 pt-16 pb-20  sm:px-6 lg:pt-24 lg:pb-28 lg:px-8 ${asPath === "/" ? "bg-gray-50" : "bg-white" }`}>
+    <div className={`relative px-4 pt-16 pb-20  sm:px-6 lg:pt-24 lg:pb-28 lg:px-8 ${asPath === "/" ? "bg-gray-50" : "bg-white"}`}>
       <div className="absolute inset-0">
         <div className="bg-white h-1/3 sm:h-2/3" />
       </div>
@@ -25,18 +25,18 @@ const Blog = ({ posts }: Props) => {
           </p>
         </div>
         <div className="flex flex-wrap justify-center mx-auto gap-5 mt-12">
-          {asPath === "/" ? posts.slice(0,5).map((post) => (
-            <ArticleCard key={post.id} post={post} />
+          {asPath === "/" ? posts.slice(0, 5).map((post) => (
+            <ArticleCard key={post.id} image={post.data.image} href={"/actualites/" + post.uid} title={post.data.title} description={post.data.description} />
           ))
-           : posts.map((post) => (
-            <ArticleCard key={post.id} post={post} />
-          ))}
+            : posts.map((post) => (
+              <ArticleCard key={post.id} image={post.data.image} href={"/actualites/" + post.uid} title={post.data.title} description={post.data.description} />
+            ))}
         </div>
 
         {asPath === "/" && <div className="flex justify-center mt-12">
-          
+
           <Button><Link href="/actualites">Voir toutes les actualités</Link></Button>
-          
+
         </div>}
       </div>
     </div>
