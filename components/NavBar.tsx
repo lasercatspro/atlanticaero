@@ -9,7 +9,7 @@ import {
 import ContactDialog from "./ContactDialog";
 import { useNavigation } from "../utils/useNavigation";
 import Cta from "./Cta";
-
+import Image from "next/image";
 
 const NavBar = () => {
   const { navigationMain, navigationSecond } = useNavigation()
@@ -24,15 +24,9 @@ const NavBar = () => {
               <div className="flex items-center justify-between py-3 lg:justify-start lg:space-x-10">
                 <div className="flex justify-start lg:w-0 lg:flex-1">
                   <Link href="/">
-                    {/* <a className="text-xl font-black uppercase" > */}
-                    {/* Bocage AirLines */}
-                    <span className="sr-only">Workflow</span>
-                    <img
-                      className="w-auto h-8 sm:h-10"
-                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                      alt=""
-                    />
-                    {/* </a> */}
+                    <span className="sr-only">Atlantic ULM 44</span>
+                    <Image
+                      src="/logo.png" width={50} height={50} alt="Atlantic ULM 44" />
                   </Link>
                 </div>
                 <div className="-my-2 -mr-2 lg:hidden">
@@ -133,13 +127,9 @@ const NavBar = () => {
                     <div className="flex items-center justify-between">
                       <div>
                         <Link className="text-lg font-black uppercase" href="/">
-                          Bocage AirLines
-                          {/*<img
-                            className="w-auto h-8"
-                            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                            alt="Workflow"
-                          /> */}
-                        </Link>
+                          <span className="sr-only">Atlantic ULM 44</span>
+                          <Image
+                            src="/logo.png" width={50} height={50} alt="Atlantic ULM 44" />                        </Link>
                       </div>
                       <div className="-mr-2">
                         <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
