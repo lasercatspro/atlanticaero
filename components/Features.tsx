@@ -20,11 +20,9 @@ const FeatureTitle = ({ title, description, href }: titleProps) => {
         {description}
       </p>
       {href && <div className="mt-5 text-lg text-indigo-500">
-        <Link href={`/${href}`}>
-          <a className="flex items-center font-bold uppercase ">
-            lire plus
-            <ChevronRightIcon className="w-5 h-5" />
-          </a>
+        <Link className="flex items-center font-bold uppercase " href={`/${href}`}>
+          lire plus
+          <ChevronRightIcon className="w-5 h-5" />
         </Link>
       </div>}
     </>

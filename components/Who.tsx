@@ -25,11 +25,9 @@ const Who = ({ title, who }: Props) => {
               {RichText.asText(title)}
             </h2>
             <div className="mt-5 text-lg text-indigo-500">
-              <Link href="/qui-suis-je">
-                <a className="flex items-center font-bold uppercase ">
-                  lire plus
-                  <ChevronRightIcon className="w-5 h-5" />
-                </a>
+              <Link className="flex items-center font-bold uppercase " href="/qui-suis-je">
+                lire plus
+                <ChevronRightIcon className="w-5 h-5" />
               </Link>
             </div>
           </div>

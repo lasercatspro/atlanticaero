@@ -10,7 +10,7 @@ type Props = {
 }
 
 const HighlightedArticle = ({ article }: Props) => {
-  const {slug, data} = article.primary["article-id"]
+  const { slug, data } = article.primary["article-id"]
   return (
     <div className=" relative py-16 bg-white">
       <div className="absolute inset-x-0 top-0 hidden h-1/2 bg-gray-50 lg:block" aria-hidden="true" />
@@ -87,9 +87,7 @@ const HighlightedArticle = ({ article }: Props) => {
                 {RichText.asText(article.primary.description)}
               </p>
               <Link href={`/${article.primary["article-id"].uid}`}>
-                <a >
-                  <Button color="secondary" />
-                </a>
+                <Button color="secondary" />
                 {/* <a
                   className="block w-full px-5 py-3 text-base font-medium text-center text-indigo-700 bg-white border border-transparent rounded-md shadow-md hover:bg-gray-50 sm:inline-block sm:w-auto"
                 >

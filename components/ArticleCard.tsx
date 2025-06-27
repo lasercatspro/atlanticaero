@@ -20,23 +20,22 @@ const ArticleCard = ({ post }: Props) => {
           alt={post?.data?.image?.alt ? post?.data?.image?.alt : RichText.asText(post?.data?.title)}
         />}
       </div>
-      <Link href={`/actualites/${post.uid}`}>
+      <Link className="flex flex-col justify-between flex-1 p-6 bg-white" href={`/actualites/${post.uid}`}>
 
-        <a className="flex flex-col justify-between flex-1 p-6 bg-white">
-          <div className="flex-1">
+        <div className="flex-1">
 
-            <div className="block mt-2">
-              <p className="text-xl font-semibold text-gray-900">{RichText.asText(post?.data?.title)}</p>
-              {post?.data?.description && <p className="mt-3 text-base text-gray-500">{RichText.asText(post?.data?.description)}</p>}
-            </div>
+          <div className="block mt-2">
+            <p className="text-xl font-semibold text-gray-900">{RichText.asText(post?.data?.title)}</p>
+            {post?.data?.description && <p className="mt-3 text-base text-gray-500">{RichText.asText(post?.data?.description)}</p>}
           </div>
+        </div>
 
-            <div className="mt-4 flex items-center font-bold text-indigo-600 uppercase ">
-              lire plus
-              <ChevronRightIcon className="w-5 h-5" />
-            </div>
+        <div className="mt-4 flex items-center font-bold text-indigo-600 uppercase ">
+          lire plus
+          <ChevronRightIcon className="w-5 h-5" />
+        </div>
 
-          {/* <div className="flex items-center mt-6">
+        {/* <div className="flex items-center mt-6">
         <div className="flex-shrink-0">
           <a href={post.author.href}>
             <span className="sr-only">{post.author.name}</span>
@@ -57,8 +56,7 @@ const ArticleCard = ({ post }: Props) => {
         </div>
       </div> */}
 
-        </a>
-          </Link>
+      </Link>
 
     </div>
 

@@ -27,22 +27,16 @@ const MoreArticles = ({ articles }: Props) => {
               </div> */}
               {i < 3 && <div className="flex flex-col justify-between flex-1 p-6 bg-white">
                 <div className="flex-1">
-                  {/* <p className="text-sm font-medium text-indigo-600">
-                    <a href={post.category.href} className="hover:underline">
-                      {post.category.name}
-                    </a>
-                  </p> */}
-                  <a href={article.uid} className="block mt-2">
+
+                  <Link href={article.uid} className="block mt-2">
                     <p className="text-xl font-semibold text-gray-900">{RichText.asText(article.data.title)}</p>
                     {article?.data?.description && <p className="mt-3 text-base text-gray-500">{RichText.asText(article.data.description)}</p>}
-                  </a>
+                  </Link>
                 </div>
                 <div className="mt-2">
-                  <Link href={`/${article.uid}`}>
-                    <a className="flex items-center font-bold text-indigo-600 uppercase ">
-                      lire plus
-                  <ChevronRightIcon className="w-5 h-5" />
-                    </a>
+                  <Link className="flex items-center font-bold text-indigo-600 uppercase " href={`/${article.uid}`}>
+                    lire plus
+                    <ChevronRightIcon className="w-5 h-5" />
                   </Link>
                 </div>
 

@@ -33,11 +33,9 @@ type Props = {
 
 export default function Social({ social, link }: Props) {
   return (
-    <Link href={link} >
-      <a target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-500">
-        <span className="sr-only">{social}</span>
-        {<SocialIcon social={social} />}
-      </a>
+    <Link target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-500" href={link} >
+      <span className="sr-only">{social}</span>
+      {<SocialIcon social={social} />}
     </Link>
   )
 }

@@ -1,6 +1,7 @@
 import { RichText } from "prismic-reactjs";
 import { PartnerT } from "../types";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
   partners: PartnerT;
@@ -20,7 +21,7 @@ const Companies = ({ partners }: Props) => {
               className="px-3 py-3 mx-auto text-center md:py-8 md:px-8 "
             >
               <div className="relative w-24 h-12 md:h-24 md:w-36">
-                {logo_link ? <a href={logo_link.url} target="_blank" rel="noopener noreferrer">
+                {logo_link ? <Link href={logo_link.url} target="_blank" rel="noopener noreferrer">
                   <Image
                     className="object-contain object-center text-gray-300 "
                     layout="fill"
@@ -29,7 +30,7 @@ const Companies = ({ partners }: Props) => {
                     src={partner_logo.url}
                     alt={partner_logo.alt ? partner_logo.alt : "logo partenaire"}
                   />
-                </a>
+                </Link>
                   :
                   <Image
                     className="object-contain object-center text-gray-300 "

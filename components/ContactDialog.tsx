@@ -4,6 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import Social from "./Social";
 import { AppContext } from '../utils/appContext'
+import Link from "next/link"
 
 type Props = {
   isOpen: boolean
@@ -78,7 +79,7 @@ export default function ContactDialog({ setIsOpen, isOpen }: Props) {
                     </p>
                   </div>
                   <div className="mt-2">
-                    <a
+                    <Link
                       href="tel:06 34 81 33 92"
                       type="button"
                       className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-gray-700 border border-transparent border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
@@ -87,7 +88,7 @@ export default function ContactDialog({ setIsOpen, isOpen }: Props) {
                       }}
                     >
                       06 34 81 33 92
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="mt-3 text-center sm:mt-5">
@@ -111,7 +112,7 @@ export default function ContactDialog({ setIsOpen, isOpen }: Props) {
                 </button>
               </div>
               <div className="mt-4">
-                <a
+                <Link
                   href="mailto:pablo@bocageairlines.fr"
                   type="button"
                   className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-gray-700 border border-transparent border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
@@ -120,7 +121,7 @@ export default function ContactDialog({ setIsOpen, isOpen }: Props) {
                   }}
                 >
                   Écrivez-nous
-                </a>
+                </Link>
               </div>
               {/* <div className="mt-4">
                 <p className="text-sm text-center text-gray-500">suivez-moi</p>
